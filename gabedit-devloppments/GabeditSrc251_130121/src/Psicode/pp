@@ -1,0 +1,11 @@
+extern GtkWidget* psicodeWin;
+extern PsicodeMolecule psicodeMolecule;
+extern PsicodeColorFore psicodeColorFore;
+extern PsicodeColorBack psicodeColorBack;
+extern PsicodeBasis psicodeBasis;
+extern PsicodeGuessWaveFunction psicodeGuessWaveFunction;
+
+extern PsicodeFunctional* functionals;
+extern PsicodeStdFunctional* stdFunctionals;
+extern gdouble* sumFunctionals;
+

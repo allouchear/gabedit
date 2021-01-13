@@ -1,0 +1,97 @@
+#!/bin/ksh
+###################################################################
+#                                                                 #
+#  Script ksh pour lancer un calcul MPQC   en batch               #
+#  Auteur:  A-R Allouche allouche@lasim.univ-lyon1.fr             #
+#  LASIM, Villeurbanne                                            #
+#  Ecriture : September 2004                                      #
+#                                                                 #
+###################################################################
+
+jobtime=$1 ; [ 0 = $# ] || shift
+numnodes=$1 ; [ 0 = $# ] || shift
+filename=$1 ; [ 0 = $# ] || shift
+
+if [ -z "$filename" ] ||  [ -z "$numnodes" ] || [ -z "$jobtime" ] 
+then
+   clear
+   echo " " 
+   echo "==========================================="
+   echo "                 submitMPQC "
+   echo " Pour toutes questions contacter : "
+   echo " A.R. Allouche allouche@lasim.univ-lyon1.fr"
+   echo "==========================================="
+   echo "vous devez fournir :"
+   echo "      - le temps de calcul( hh:mm:ss)"
+   echo "      - le nombre de processeurs( entier pair entre 2 et 16)"
+   echo "      - le nom du fichier(y compris l'extension .com)"
+   echo "-------------------------------------------"
+   echo "Exemple:"
+   echo "       submitMPQC 2:00:00  2 h2.com "
+   echo "       fichier de donnees         : h2.com"
+   echo "       nombre de processeurs      : 2"
+   echo "       Temps de calcul(maximum)   : 2 heurs"
+   echo "==========================================="
+   echo " " 
+   exit 1
+fi
+filecom=$filename
+filename=${filecom%.com}
+DEFAULTDIR=`pwd`
+TEMPDIR=/tmp
+mpqcrun=/data/logiciels/MPQC/bin/mpqc
+mpirunvar=/usr/local/lam-mpi/bin/mpirun
+lamhostfile=/data/logiciels/MPI/lamhostfile
+nameUser=$LOGNAME
+lamconfile=$DEFAULTDIR/.ip.$filename.conf
+if test ! -s "$filecom"
+then
+   echo " " 
+   echo "============================================"
+   echo "le fichier $filecom est introuvable(ou vide)"
+   echo "============================================"
+   echo " " 
+   exit 2
+fi
+
+endof=EOF
+cat > $filename.pbs <<EOF
+#!/bin/sh
+#PBS -j oe
+#PBS -N $filename
+#PBS -l walltime=$jobtime
+#PBS -o $filename.pbsout
+#PBS -l nodes=`echo $numnodes | awk '{print $1/2}'`:ppn=2
+
+
+#!/bin/bash
+nodes=\`cat \$PBS_NODEFILE\`
+nnodes=\`wc \$PBS_NODEFILE | awk '{print \$1}'\`
+touch $lamconfile
+for i in \$nodes
+do
+echo "\$i cpu=1" >> $lamconfile
+lastNode=\$i
+done
+cat $lamconfile
+source .bashrc 
+
+rsh \$lastNode 'cd $TEMPDIR; mkdir $nameUser; cd $nameUser; lamboot $lamconfile; $mpirunvar  -np $numnodes $mpqcrun -messagegrp "<MPIMessageGrp>:()" "$DEFAULTDIR/$filecom" > "$DEFAULTDIR/$filename.out"; lamhalt ; rm $lamconfile'
+EOF
+
+qsub $filename.pbs
+echo " " 
+echo "==================================================================="
+echo " " 
+echo "Un fichier $filename.pbs a ete cree pour lancer le calcul"
+echo "Ne pas effacer ce fichier avant la fin du calcul"
+echo " " 
+echo "-------------------------------------------------------------------"
+echo " " 
+echo "pour avoir des informations sur vos job taper : qstat "
+echo " " 
+echo "pour detruire un job taper : qdel num.master0"
+echo "   num.master0 est l'id du Job, Id fourni par qstat" 
+echo " " 
+echo "==================================================================="
+echo " " 

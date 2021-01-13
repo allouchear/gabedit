@@ -1,0 +1,28 @@
+
+GTKLIB = -L/opt/local/lib -lintl -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0 -lfreetype -lz -lfontconfig -lpng16 -lXrender -lpixman-1 -lX11   -lgtkglext-x11-1.0 -lgdkglext-x11-1.0  
+GTKCFLAGS = -I/opt/local/include/gtk-2.0 -I/opt/local/lib/gtk-2.0/include -I/opt/local/include/atk-1.0 -I/opt/local/include/cairo -I/opt/local/include/pango-1.0 -I/opt/local/include/glib-2.0 -I/opt/local/lib/glib-2.0/include -I/opt/local/include/freetype2 -I/opt/local/include -I/opt/local/include/pixman-1 -I/opt/local/include/libpng15 -I/opt/local/include/gtkglext-1.0 -I/opt/local/lib/gtkglext-1.0/include
+OGLLIB=-L/usr/X11/lib -lGL -L/usr/X11/lib -lGLU
+OGLCFLAGS=-I/usr/X11/include
+GDKGL=gdkgl
+LIBPTHREAD    = -lpthread
+RM = rm -f
+RMTMP = rm -f tmp/*
+MAKE = make
+MKDIR = mkdir -p
+WIN32LIB   = 
+X11LIB   = -lX11
+CC = gcc -I/usr/X11/include
+enable_omp = 0
+ifeq ($(enable_omp),1)
+OMPLIB=-L/usr/lib -lgomp
+OMPCFLAGS=-DENABLE_OMP -fopenmp
+endif
+
+#DRAWGEOMGL= 
+DRAWGEOMGL=-DDRAWGEOMGL
+
+COMMONCFLAGS = -Wall -O2 -DENABLE_DEPRECATED $(OMPCFLAGS) $(DRAWGEOMGL) -Wformat-security -Wno-unused-variable 
+
+
+
+

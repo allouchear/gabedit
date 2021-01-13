@@ -1,0 +1,31 @@
+# wibdows config (with MinGW)
+
+CC = gcc -mms-bitfields 
+GTKDIR = C:/GnuPrograms/gtk22
+GTKGLEXT = C:/GtkGLExt
+#GTKLIB = `pkg-config gtk+-2.0 --libs`
+GTKLIB = -L$(GTKDIR)/lib -lintl -lgtk-win32-2.0 -lgdk-win32-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangowin32-1.0 -lgdi32 -lpango-1.0 -lgobject-2.0 -lgmodule-2.0 -lglib-2.0  -lcairo -lpangocairo-1.0 -L$(GTKGLEXT)/lib -lgdkglext-win32-1.0 -lgtkglext-win32-1.0
+
+#GTKCFLAGS =  `pkg-config gtk+-2.0 --cflags` 
+GTKCFLAGS = -I$(GTKDIR)/include -I$(GTKDIR)/include/gtk-2.0 -I$(GTKDIR)/lib/gtk-2.0/include -I$(GTKDIR)/include/atk-1.0 -I$(GTKDIR)/include/pango-1.0 -I$(GTKDIR)/include/glib-2.0 -I$(GTKDIR)/lib/glib-2.0/include  -I$(GTKDIR)/include/cairo -I$(GTKGLEXT)/include/gtkglext-1.0 -I$(GTKGLEXT)/lib/gtkglext-1.0/include
+
+MKDIR = mkdir 
+MAKE = mingw32-make
+RM = del
+RMTMP = del /S/Q tmp
+OGLLIB = -lopengl32 -lglu32
+OGLCFLAGS=-IE:
+GDKGL = gdkgl-win32
+JPEGLIB    = 
+WIN32LIB   = -lwsock32 -lcomdlg32
+X11LIB   =
+PTHREADLIB  = 
+enable_omp = 1
+ifeq ($(enable_omp),1)
+OMPLIB=-L/usr/lib -lgomp
+OMPCFLAGS=-DENABLE_OMP -fopenmp
+endif
+COMMONCFLAGS = -Wall -O2 -DENABLE_DEPRECATED $(OMPCFLAGS) -Wformat-security -Wno-unused-variable 
+
+
+

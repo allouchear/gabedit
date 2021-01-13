@@ -1,0 +1,1 @@
+povray Antialias=on +I$1.pov +O$1.bmp +W900 +H900

@@ -1,0 +1,8 @@
+#Thank's to Dominik 'Rathann' Mierzejewski for providing this script
+sed -i \
+ -e 's/GtkSignalFunc/GCallback/g' \
+ -e 's/GTK_SIGNAL_FUNC/G_CALLBACK/g' \
+ -e 's/GTK_CHECK_CAST/G_TYPE_CHECK_INSTANCE_CAST/g' \
+ -e 's/GTK_CHECK_TYPE/G_TYPE_CHECK_INSTANCE_TYPE/g' \
+ -e 's/GtkDestroyNotify/GDestroyNotify/g' \
+ `find -name "*.c" -o -name "*.h"`

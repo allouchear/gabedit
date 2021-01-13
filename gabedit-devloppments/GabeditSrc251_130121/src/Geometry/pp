@@ -1,0 +1,39 @@
+extern FragmentsItems *FragItems;
+extern gint NFrags;
+
+extern CoordMaxMin coordmaxmin;
+
+extern GeomDef *geometry;
+extern GeomDef *geometry0;
+extern guint Natoms;
+
+extern gint *NumFatoms;
+extern guint NFatoms;
+
+extern gint TransX;
+extern gint TransY;
+extern GtkWidget *GeomDlg;
+extern GtkWidget *StopButton;
+extern gboolean StopCalcul;
+
+extern gboolean ShadMode;
+extern gboolean PersMode;
+extern gboolean LightMode;
+extern gboolean OrtepMode;
+extern gboolean DrawDistance;
+extern gboolean DrawDipole;
+extern gboolean ShowDipole;
+extern gboolean ShowHBonds;
+
+#define NDIVDIPOLE 20
+extern gdouble dipole[NDIVDIPOLE][3];
+extern gdouble dipole0[NDIVDIPOLE][3];
+extern gdouble dipole00[NDIVDIPOLE][3];
+extern gint DXi[NDIVDIPOLE];
+extern gint DYi[NDIVDIPOLE];
+extern gint Ndipole[NDIVDIPOLE];
+extern gchar* AtomToInsert;
+extern gint NumSelAtoms[4];
+extern gboolean Ddef;
+
+

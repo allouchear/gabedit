@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=gabedit
+Comment=Quantum chemistry interface
+Exec=gabedit
+Icon=gabedit
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Education;Chemistry;
+

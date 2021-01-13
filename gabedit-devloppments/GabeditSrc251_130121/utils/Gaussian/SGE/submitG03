@@ -1,0 +1,125 @@
+#!/bin/sh
+###################################################################
+#                                                                 #
+#  Script ksh pour lancer un calcul G03 en batch               #
+#  Auteur:  A-R Allouche allouche@lasim.univ-lyon1.fr             #
+#  LASIM, Villeurbanne                                            #
+#  Ecriture : Janvier 2006                                        #
+#                                                                 #
+###################################################################
+
+queue=$1 ; [ 0 = $# ] || shift
+filename=$1 ; [ 0 = $# ] || shift
+
+if [ -z "$filename" ] || [ -z "$queue" ]
+then
+   clear
+   echo " " 
+   echo "==========================================="
+   echo "                 submitG03 "
+   echo " Pour toutes questions contacter : "
+   echo " A.R. Allouche allouche@lasim.univ-lyon1.fr"
+   echo "==========================================="
+   echo "     Queue         Duree    # proc"
+   echo "     =========     =====    ======"
+   echo "     v12zlin1      96h           2"
+   echo "     v20zlin       96h           2"
+   echo "     v20zlin1     168h           2"
+   echo "     v22zlin       72h           4"
+   echo "     v40zlin      120h           4"
+   echo "     v12zlin1_1    96h           1"
+   echo "     v20zlin1_1   168h           1"
+   echo "-------------------------------------------"
+   echo "Vous devez fournir :"
+   echo " - Le nom de la queue :"
+   echo " - Le nom du fichier(y compris l'extension .com)"
+   echo "-------------------------------------------"
+   echo "Exemple:"
+   echo "       submitG03 v12zlin1 h2.com "
+   echo "       fichier de donnees : h2.com"
+   echo "       Queue   : v12zlin1(96)"
+   echo "==========================================="
+   echo " " 
+   exit 1
+fi
+filecom=$filename
+filename=${filecom%.com}
+
+[ $queue = "v12zlin1" ] && underqueue="gaussian2" && nproc=2
+[ $queue = "v20zlin" ] && underqueue="gaussian2" && nproc=2
+[ $queue = "v20zlin1" ] && underqueue="gaussian2" && nproc=2
+[ $queue = "v22zlin" ] && underqueue="gaussian4" && nproc=4
+[ $queue = "v40zlin" ] && underqueue="gaussian4" && nproc=4
+
+[ $queue = "v12zlin1_1" ] && queue="v12zlin1" && underqueue="MONO" && nproc=1
+[ $queue = "v20zlin1_1" ] && queue="v20zlin1" && underqueue="MONO" && nproc=1
+
+DEFAULTDIR=`pwd`
+if test ! -s "$filecom"
+then
+   echo " " 
+   echo "============================================"
+   echo "le fichier $filecom est introuvable(ou vide)"
+   echo "============================================"
+   echo " " 
+   exit 2
+fi
+
+g03filecom=g03$filecom
+endof=EOF
+cat > $filename.sh <<EOF
+#!/bin/sh
+cd $DEFAULTDIR
+export LD_ASSUME_KERNEL=2.4.1
+export g03root=/softs/gaussianlasim
+. \$g03root/g03/bsd/g03.profile
+export GAUSS_SCRDIR=/scratch/$LOGNAME/$RANDOM
+mkdir /scratch/$LOGNAME
+mkdir \$GAUSS_SCRDIR
+
+if test ! -s "$g03filecom"
+then
+/bin/rm $g03filecom
+fi
+if [ $nproc != "1" ]
+then
+cat > $g03filecom <<$endof
+%Nproc=$nproc
+$endof
+fi
+cat $filecom >> $g03filecom
+
+echo "Run gaussian 03 :  Queue = $queue/$underqueue "
+
+\$g03root/g03/g03 < "$DEFAULTDIR/$g03filecom" > $filename.log 
+
+/bin/rm $g03filecom
+echo "Remove tmp dir : \$GAUSS_SCRDIR "
+/bin/rm -r \$GAUSS_SCRDIR
+/bin/rm $filename.sh
+
+EOF
+
+if [ $nproc != "1" ]
+then
+/usr/local/sge/bin/lx24-amd64/qsub -o $DEFAULTDIR -e $DEFAULTDIR -q $queue -pe $underqueue $nproc $filename.sh
+else
+/usr/local/sge/bin/lx24-amd64/qsub -o $DEFAULTDIR -e $DEFAULTDIR -q $queue $filename.sh
+fi
+
+
+echo " " 
+echo "==================================================================="
+echo " " 
+echo "Un fichier $filename.sh a ete cree pour lancer le calcul"
+echo "Ne pas effacer ce fichier avant la fin du calcul"
+echo " " 
+echo "-------------------------------------------------------------------"
+echo " " 
+echo "pour avoir des informations sur vos job taper : qstat "
+echo " " 
+echo "pour detruire un job taper : qdel JobID"
+echo "   JobID est le Job-Id fourni par qstat" 
+echo " " 
+echo "==================================================================="
+echo " " 

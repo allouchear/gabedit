@@ -1,0 +1,8 @@
+
+#ifndef __GABEDIT_CREATEDEFAULTPDBTPL_H__
+#define __GABEDIT_CREATEDEFAULTPDBTPL_H__
+
+gboolean CreateDefaultPDBTpl();
+
+#endif /* __GABEDIT_CREATEDEFAULTPDBTPL_H__ */
+

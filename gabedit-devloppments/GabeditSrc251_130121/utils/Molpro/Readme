@@ -1,0 +1,24 @@
+/****************************************************************************************************************************
+ * At this directory you have 2 programs :
+ * 1-> createMolproLibFileForGabedit.c
+ * 2-> createMolproLibFunctionForGabedit.c
+ *
+ * 1)
+ * createMolproLibFileForGabedit.c is a program for create molprobasis file.
+ * For this : put createMolproLibFileForGabedit.c in the server where Molpro is installed.
+ * Compile this program : cc -o createMolproLibFileForGabedit createMolproLibFileForGabedit.c 
+ * Type the following order : libmol > libmol.bas
+ * Type the following order : ./createMolproLibFileForGabedit
+ * createMolproLibFileForGabedit create molprobasis file.
+ * Put this file (molprobasis) in .gabedit.1.2.x directroy
+ * .gabedit.1.2.x is a directory created by gabedit at your local station at your home directory
+ * x is the number of micro version of gabedit (x=0, 1, 2, 3, 4, 5, 6, 7, 8 or 9)
+ *
+ *
+ * 2)
+ * createMolproLibFileForGabedit.c is a program for create a function of MolproLib.c file
+ * this file is util only for Gabedit developers
+ ---------------------------------------------------------------------------------------------------------------------------
+ * in PBS directory, you have a script (submitMolpro) for submit a Molpro job under PBS batch (single processor) system
+ * in LoadLeveler (IBM) directory, you have  a script (submitMolpro) for submit a Molpro job under LoadLeveler batch system
+****************************************************************************************************************************/

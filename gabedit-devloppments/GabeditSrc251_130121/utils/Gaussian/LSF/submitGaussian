@@ -1,0 +1,34 @@
+#!/bin/ksh
+if test -z "$1"
+then
+   echo "+--------------------------------------------------------------+"
+   echo "!                                                              !"
+   echo "! submitGaussian command :                                     !"
+   echo "!                                                              !"
+   echo "! This command is used to submit Gaussian job with LSF         !"
+   echo "!                                                              !"
+   echo "! Syntax: submitGaussian QUEUE dataFile.com                    !"
+   echo "!                                                              !"
+   echo "! type          - type of queues(G,GL)                         !"
+   echo "!                 G    : under 172800 seconds(default)         !"
+   echo "!                 GL  : under 604800 seconds                   !"
+   echo "! dataFile.com  - name of the input gaussian file              !"
+   echo "!                                                              !"
+   echo "+--------------------------------------------------------------+"
+   exit
+fi
+type=$1
+jobcom=$2
+echo $jobcom
+if [ ! -f "$jobcom" ]
+then
+   echo I can not open $jobcom file
+   exit
+fi
+if test -z "$type"
+then
+   type=G
+fi
+job=${jobcom%.com}
+bsub -q $type -J $job  -o $job.out -e $job.err "/home/allouche/shell/gauss $job"  
+exit

@@ -1,0 +1,6 @@
+extern GridLimits limits;
+extern gint NumPoints[3];
+extern gdouble firstDirection[3];
+extern gdouble secondDirection[3];
+extern gdouble thirdDirection[3];
+extern gdouble originOfCube[3];

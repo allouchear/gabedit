@@ -1,0 +1,71 @@
+#!/bin/sh
+###################################################################
+#                                                                 #
+#  Script ksh pour lancer un calcul Dalton en batch               #
+#  Auteur:  A-R Allouche allouche@lasim.univ-lyon1.fr             #
+#  LASIM, Villeurbanne                                            #
+#  Ecriture : Janvier 2006                                        #
+#                                                                 #
+###################################################################
+
+queue=$1 ; [ 0 = $# ] || shift
+filename=$1 ; [ 0 = $# ] || shift
+
+if [ -z "$filename" ] || [ -z "$queue" ]
+then
+   clear
+   echo " " 
+   echo "==========================================="
+   echo "              submitDaltonMono "
+   echo " Pour toutes questions contacter : "
+   echo " A.R. Allouche allouche@lasim.univ-lyon1.fr"
+   echo "==========================================="
+   echo "vous devez fournir :"
+   echo "      - le nom de la queue (test1proc,  v20zlin, v40zlin, v20zlin1 ) "
+   echo "                           (10 minutes, 12h00  , 24h00  , 168h00   ) "
+   echo "      - le nom du fichier(y compris l'extension .dal)"
+   echo "-------------------------------------------"
+   echo "Exemple:"
+   echo "       submitDaltonMono v20zlin h2.dal "
+   echo "       fichier de donnees : h2.dal"
+   echo "       Queue              : v20zlin (12h00)"
+   echo "==========================================="
+   echo " " 
+   exit 1
+fi
+filedal=$filename
+filename=${filedal%.dal}
+DEFAULTDIR=`pwd`
+if test ! -s "$filedal"
+then
+   echo " " 
+   echo "============================================"
+   echo "le fichier $filedal est introuvable(ou vide)"
+   echo "============================================"
+   echo " " 
+   exit 2
+fi
+
+endof=EOF
+cat > $filename.sh <<EOF
+#!/bin/sh
+cd $DEFAULTDIR
+/home/allouche/bin/dalton $filename
+EOF
+
+/usr/local/sge/bin/lx24-amd64/qsub -o $DEFAULTDIR -e $DEFAULTDIR -q $queue $filename.sh
+echo " " 
+echo "==================================================================="
+echo " " 
+echo "Un fichier $filename.sh a ete cree pour lancer le calcul"
+echo "Ne pas effacer ce fichier avant la fin du calcul"
+echo " " 
+echo "-------------------------------------------------------------------"
+echo " " 
+echo "pour avoir des informations sur vos job taper : qstat "
+echo " " 
+echo "pour detruire un job taper : qdel JobID"
+echo "   JobID est le Job-Id fourni par qstat" 
+echo " " 
+echo "==================================================================="
+echo " " 

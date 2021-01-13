@@ -1,0 +1,157 @@
+#!/bin/ksh
+###################################################################
+#                                                                 #
+#  Script ksh pour lancer un calcul Gaussian 98 en batch          #
+#  Auteur:  A-R Allouche allouche@lasim.univ-lyon1.fr             #
+#  LASIM, Villeurbanne                                            #
+#  Ecriture : Janvier 2003                                        #
+#                                                                 #
+###################################################################
+
+nproc=$1 ; [ 0 = $# ] || shift
+jobtime=$1 ; [ 0 = $# ] || shift
+filename=$1 ; [ 0 = $# ] || shift
+
+if [ -z "$filename" ] || [ -z "$nproc" ] || [ -z "$jobtime" ]
+then
+   clear
+   echo " " 
+   echo "==========================================="
+   echo "                 submitg98 "
+   echo " Pour toutes questions contacter : "
+   echo " A.R. Allouche allouche@lasim.univ-lyon1.fr"
+   echo "==========================================="
+   echo "vous devez fournir :"
+   echo "      - le nombre de microprocesseurs"
+   echo "      - le temps de calcul( hh:mm:ss)"
+   echo "      - le nom du fichier(y compris l'extension .com)"
+   echo "-------------------------------------------"
+   echo "Exemple:"
+   echo "       submitg98 4 2:00:00 h2.com "
+   echo "       fichier de donnees         : h2.com"
+   echo "       Nombre de microprocesseurs : 4"
+   echo "       Temps de calcul(maximum)   : 2 heurs"
+   echo "==========================================="
+   echo " " 
+   exit 1
+fi
+filecom=$filename
+filename=${filecom%.com}
+if test ! -s "$filecom"
+then
+   echo " " 
+   echo "============================================"
+   echo "le fichier $filecom est introuvable(ou vide)"
+   echo "============================================"
+   echo " " 
+   exit 2
+fi
+
+gscr=/tmpp/$NAME
+
+notifi="# @ notification=never"
+notifyuser="#"
+
+endof=EOF
+cat > $filename.cmd <<EOF
+#!/bin/ksh
+#--------------------------------------------------------------------
+# fichier script genere par batg98
+#--------------------------------------------------------------------
+#
+# @ step_name = step_$filename
+#
+# @ SET=$filename
+#
+# @ restart=no
+#
+# @ output=\$(SET).output
+# @ error=\$(SET).error
+#
+# @ initialdir = `pwd`
+$notifyuser
+# @ total_tasks = $nproc
+# @ wall_clock_limit = $jobtime
+#
+# @ job_type = parallel
+# @ node = 1
+$notifi
+# @ environment = COPY_ALL; SET=\$(SET);LL_JOB=true;cluster=\$(cluster);OMP_NUM_THREADS=\$(total_tasks);GAUSS_SCRDIR=$gscr/$RANDOM;
+# @ queue
+
+PREFIX=g98
+
+util=\`whoami\`
+#-------------------------------------------------------------
+# operations a realiser avant l'execution de GAUSSIAN
+#-------------------------------------------------------------
+
+if test ! -d $gscr
+then
+   mkdir $gscr
+fi
+
+# creation du scratch dir s'il n'existe pas
+
+
+if test -d "\$GAUSS_SCRDIR"
+then
+   echo "le repertoire de travail \$GAUSS_SCRDIR existe deja"
+   EXISTE=1
+else
+   echo "le repertoire de travail \$GAUSS_SCRDIR n'existe pas : creation"
+   mkdir \$GAUSS_SCRDIR
+   EXISTE=0
+fi
+#-------------------------------------------------------------
+# demarrage de GAUSSIAN PARALLELE
+#-------------------------------------------------------------
+echo "demarrage de GAUSSIAN PARALLELE"
+
+export g98root=/usr/oem
+
+. \$g98root/g98/bsd/g98.profile
+cat > \$PREFIX.\$SET.com <<$endof
+%Nproc=\$OMP_NUM_THREADS
+$endof
+cat \$SET.com >> \$PREFIX.\$SET.com 
+
+timex \$g98root/g98/bsd/g98l  < \$PREFIX.\$SET.com  2>&1 > \$SET.log
+#
+#-------------------------------------------------------------
+# operations a realiser apres l'execution de GAUSSIAN
+#-------------------------------------------------------------
+
+# destruction du scratch dir s'il a ete cree durant le run
+
+if (( EXISTE==0))
+then
+   echo "destruction du repertoire \$GAUSS_SCRDIR cree"
+   rm -r \$GAUSS_SCRDIR
+fi
+
+EOF
+llsubmit $filename.cmd
+echo " " 
+echo "==================================================================="
+echo " " 
+echo "Un fichier $filename.cmd a ete cree pour lancer le calcul"
+echo "Ne pas effacer ce fichier avant la fin du calcul"
+echo " " 
+echo "-------------------------------------------------------------------"
+echo " " 
+echo "pour avoir des informations sur vos job taper : llq -u $NAME"
+echo " " 
+echo "pour detruire un job taper : llcancel host.cluster.proc"
+echo "                   host.cluster.proc est fourni par llq"
+echo " " 
+echo "pour avoir plus d'informations taper : llq -x -l -u $NAME"
+echo " " 
+echo "-------------------------------------------------------------------"
+echo " " 
+echo "Si vous avez des problemes de memoire, coder dans toto.com"
+echo "%Mem=160000000    ce qui correspobd a 1G de memoire"
+echo "#MaxDisk=500MB    pour qu'il utilise de preference la memoire"
+echo " " 
+echo "==================================================================="
+echo " " 

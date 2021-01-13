@@ -1,0 +1,274 @@
+#!/bin/bash
+# requirement : dftb+-1.3 xyz2gen tool,  see : https://www.dftb-plus.info/tools/dptools/
+
+filename=$1 ; [ 0 = $# ] || shift
+outname=$1 ; [ 0 = $# ] || shift
+
+if [ -z "$filename" ]
+then
+   clear
+   echo " " 
+   echo "==========================================="
+   echo "                 runDFTBGabedit "
+   echo "-------------------------------------------"
+   echo "Example:"
+   echo "       runDFTBGabedit h2.inp h2.out "
+   echo "==========================================="
+   echo " " 
+   exit 1
+fi
+fileinp=$filename
+filename=${fileinp%.inp}
+filename=${filename%.com}
+
+DEFAULTDIR=`pwd`
+if test ! -s "$fileinp"
+then
+   echo " " 
+   echo "============================================"
+   echo " I cannot find $fileinp file"
+   echo "============================================"
+   echo " " 
+   exit 2
+fi
+
+cd $DEFAULTDIR
+#cat $fileinp
+fn=`echo "$filename" | sed "s/.*\///" | sed "s/\..*//"`
+ffn=${fn}_$$
+#echo $fn
+
+fxyz=${ffn}.xyz
+#create xyz file
+awk 'BEGIN{
+	natoms=0;
+}
+{
+	i++;
+	#printf("i=%d s=%s\n",i,$1);
+	if(i==1) option=$1
+	if(i==3) 
+	{ 
+		natoms=$1
+		charge=$2 
+		mult=$3
+		printf("%d\n",natoms);
+		printf("%s\n",option);
+	}
+	if(i>3 && i<=natoms+3)
+	{
+		printf("%s %s %s %s\n",$1,$9,$10,$11);
+	}
+}
+END{
+}' $fileinp > $fxyz
+
+# convert xyz in gen file
+xyz2gen $fxyz
+
+fhsd=${ffn}.hsd
+fgen=${ffn}.gen
+echo "Geometry = GenFormat {" > $fhsd
+echo "  <<< \"$fgen\"" >> $fhsd
+echo "}">>$fhsd
+
+awk -v ffn=$ffn 'BEGIN{
+i=1
+}
+{
+	if(i==1) 
+	{
+		option=$1
+		if(option==2)
+		{
+			printf("Driver = ConjugateGradient {\n");
+			printf("MovedAtoms = 1:-1\n");
+			printf("MaxForceComponent = 1.0e-4\n");
+			printf("MaxSteps = 200\n");
+			printf("OutputPrefix = \"geomOpt\"\n",ffn);
+			printf("}\n");
+		}
+		if(option==1)
+		{
+			printf("Options{ CalculateForces = Yes }\n");
+		}
+		exit 1
+	}
+}
+END{
+}' $fileinp >> $fhsd
+
+fxyzOpt=${ffn}Opt.xyz
+
+echo "Hamiltonian = DFTB {" >> $fhsd
+echo "  SCC = Yes" >> $fhsd
+echo "  SCCTolerance = 1.0E-5" >> $fhsd
+echo "  MaxSCCIterations = 50" >> $fhsd
+echo "  MaxAngularMomentum = {" >> $fhsd
+AT=H && n=(`grep -c $AT $fxyz`) && [ n > 0 ] && echo "$AT = \"s\"" >> $fhsd
+AT=C && n=(`grep -c $AT $fxyz`) && [ n > 0 ] && echo "$AT = \"p\"" >> $fhsd
+AT=O && n=(`grep -c $AT $fxyz`) && [ n > 0 ] && echo "$AT = \"p\"" >> $fhsd
+AT=N && n=(`grep -c $AT $fxyz`) && [ n > 0 ] && echo "$AT = \"p\"" >> $fhsd
+AT=P && n=(`grep -c $AT $fxyz`) && [ n > 0 ] && echo "$AT = \"p\"" >> $fhsd
+echo "  }" >> $fhsd
+
+echo "  Filling = Fermi {">> $fhsd
+echo "      Temperature [Kelvin] = 20">> $fhsd
+echo "  }" >> $fhsd
+echo "  SlaterKosterFiles = Type2FileNames {" >> $fhsd
+echo "        Prefix = "/home/allouche/Softwares/DFTBP/parameters/mio-1-1/"" >> $fhsd
+echo "        Separator = \"-\"" >> $fhsd
+echo "        Suffix = \".skf\"" >> $fhsd
+echo "  }" >> $fhsd
+echo "}" >> $fhsd
+echo "ParserOptions = {" >> $fhsd
+echo "ParserVersion = 3" >> $fhsd
+echo "}" >> $fhsd
+
+
+#echo "==========================================================="
+#echo "FHSD=$fhsd"
+#cat $fhsd
+#echo "==========================================================="
+
+# RUN DFTB+
+CURDIR=$PWD
+export OMP_NUM_THREADS=1
+export OUT=$CURDIR/${ffn}.log
+echo "DIR=$CURDIR" > $OUT
+[ -d /opt/tmp/$LOGNAME ] || mkdir /opt/tmp/$LOGNAME
+x=$$
+export TMPD=/opt/tmp/$LOGNAME/${ffn}$x
+mkdir $TMPD
+cp $fgen $TMPD/.
+cp $fhsd $TMPD/dftb_in.hsd
+cd $TMPD
+/home/allouche/Softwares/DFTBP/bin/dftb+ >>  $OUT
+echo "=================================================================" >>  $OUT
+echo "TMPD=$TMPD" >> $OUT
+if test -s "$TMPD/geomOpt.xyz"
+then
+echo "GEOMETRY XYZ" >> $OUT
+cat $TMPD/geomOpt.xyz >> $OUT
+echo "=================================================================" >>  $OUT
+fi
+
+if test -s "$TMPD/geomOpt.gen"
+then
+echo "GEOMETRY GEN" >> $OUT
+cat $TMPD/geomOpt.gen >> $OUT
+echo "=================================================================" >>  $OUT
+fi
+
+if test -s "$TMPD/detailed.out"
+then
+echo "DETAILED" >> $OUT
+cat $TMPD/detailed.out >> $OUT
+echo "=================================================================" >>  $OUT
+fi
+
+
+if test -s "$TMPD/hessian.out"
+then
+echo "HESSIAN" >> $OUT
+cat $TMPD/hessian.out >> $OUT
+echo "=================================================================" >>  $OUT
+fi
+cd ..
+/bin/rm -r $TMPD
+cd $CURDIR
+
+#echo see $OUT file
+
+tmpfile=${ffn}.tmp
+grep 'Total Energy:' $OUT | tail -1 > ${ffn}.tmp
+#echo tmp=$tmpfile
+#cat $tmpfile
+energy=$(awk '{printf("%f",$3);}' $tmpfile)
+#echo "======================="
+#echo "WARNING dipole set to 0"
+#echo "======================="
+echo "0.0" > $tmpfile
+echo "0.0" >> $tmpfile
+echo "0.0" >> $tmpfile
+read mux muy muz <<< $(cat $tmpfile | awk '{ print $1; }')
+#echo Mu = $mux $muy $muz
+#echo $outname
+echo $energy >  $outname
+echo $mux $muy $muz >>  $outname
+#echo 
+awk 'BEGIN{
+id=0
+}
+{
+	if(id==1)
+	{ 
+		if(NF != 3) id++; 
+		else printf("%s %s %s\n",$1,$2,$3);
+	}  
+	if($0 ~ /Total Forces/) { id=1;}
+}' $OUT >  $tmpfile
+
+#echo TMPFILE  ===================
+#cat  $tmpfile
+#echo END TMPFILE ========================
+cat  $tmpfile >> $outname
+
+#cat $outname
+
+# get natoms charge and mult
+awk 'BEGIN{
+	natoms=0;
+	i=0
+}
+{
+	i++;
+	#printf("i=%d s=%s\n",i,$1);
+	if(i==3) 
+	{ 
+		natoms=$1
+		charge=$2 
+		mult=$3
+		printf("%s\n%s\n%s\n",natoms, charge, mult);
+		exit 0
+	}
+}
+END{
+}' $fileinp > $tmpfile
+read natoms charge spin muz <<< $(cat $tmpfile | awk '{ print $1; }')
+
+awk 'BEGIN{
+id=0
+idd=0
+}
+{
+	if(id>=1) { id++;}
+	if(id>3) if(NF<4) { id=0; exit 0;}
+	if(id>3) { printf(" %s %s %s %s 0 0.0 2 1 %s %s %s 0\n",$1,$1,$1,$1,$2,$3,$4); }  
+	if($0 ~ /GEOMETRY XYZ/) { id=1;}
+}' $OUT > $tmpfile
+
+n=(`grep -c "Geometry did NOT converge" $OUT`)
+[ "$n" -gt 0 ] && echo "WARNING!!!!!!!!!!!!!!!!!!!!!!!!!"
+grep 'Geometry did NOT converge' $OUT
+[ "$n" -gt 0 ] && echo "================================================================="
+
+nl=`wc -l < $tmpfile`
+if [ $nl != "0" ]
+then
+echo Geometry >> $outname
+echo $natoms $charge $spin >> $outname
+cat $tmpfile >> $outname
+fi
+
+
+
+#echo file=$outname
+#cat $outname
+
+rm $fhsd
+rm $fgen
+rm $fxyz
+rm $tmpfile
+rm $OUT
+

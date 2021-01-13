@@ -1,0 +1,9 @@
+extern GtkWidget* molcasWin;
+extern MolcasMolecule molcasMolecule;
+extern MolcasOptimization molcasOptimization;
+extern MolcasSolvation molcasSolvation;
+extern MolcasScf molcasScf;
+extern MolcasGridIT molcasGridIT;
+extern MolcasColorFore molcasColorFore;
+extern MolcasColorBack molcasColorBack;
+extern MolcasSystemVariables molcasSystemVariables;

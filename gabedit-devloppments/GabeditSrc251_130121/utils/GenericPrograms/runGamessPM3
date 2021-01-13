@@ -1,0 +1,269 @@
+#!/bin/bash
+RUNGAMESS=/home/allouche/Softwares/gamess/rungms
+
+filename=$1 ; [ 0 = $# ] || shift
+outname=$1 ; [ 0 = $# ] || shift
+
+if [ -z "$filename" ]
+then
+   clear
+   echo " " 
+   echo "==========================================="
+   echo "                 runGamessPM3 "
+   echo "-------------------------------------------"
+   echo "Example:"
+   echo "       runGamessPM3 h2.inp h2.out "
+   echo "==========================================="
+   echo " " 
+   exit 1
+fi
+fileinp=$filename
+filename=${fileinp%.inp}
+filename=${filename%.com}
+
+DEFAULTDIR=`pwd`
+if test ! -s "$fileinp"
+then
+   echo " " 
+   echo "============================================"
+   echo " I cannot find $fileinp file"
+   echo "============================================"
+   echo " " 
+   exit 2
+fi
+
+cd $DEFAULTDIR
+#cat $fileinp
+fn=`echo "$filename" | sed "s/.*\///" | sed "s/\..*//"`
+ffn=${fn}_$$
+fn=${ffn}.inp
+echo $fn
+awk 'BEGIN{
+natoms=0;
+}
+{
+i++;
+#printf("i=%d s=%s\n",i,$1);
+if(i==1) 
+{ 
+	option=$1
+	if(option==2) printf(" $CONTRL RUNTYP=Optimize $END\n")
+	else if(option==1) printf(" $CONTRL RUNTYP=GRADIENT $END\n")
+	else printf(" $CONTRL RUNTYP=ENERGY $END\n")
+}
+if(i==3) 
+{ 
+	natoms=$1
+	charge=$2 
+	mult=$3
+	printf(" $CONTRL ICHARG=%d  MULT=%d $END\n",charge,mult)
+	if($mult != 1) printf(" $CONTRL SCFTYP = UHF $END\n");
+	printf(" $STATPT OPTTOL=1.0E-3  $END\n")
+	printf(" $BASIS GBASIS=PM3 $END\n")
+	printf(" $DATA\n")
+	printf("Molecule\n")
+	printf("C1\n")
+}
+if(i>3 && i<=natoms+3)
+{
+if($1=="H") z=1;
+if($1=="He") z=2;
+if($1=="Li") z=3;
+if($1=="Be") z=4;
+if($1=="B") z=5;
+if($1=="C") z=6;
+if($1=="N") z=7;
+if($1=="O") z=8;
+if($1=="F") z=9;
+if($1=="Ne") z=10;
+if($1=="Na") z=11;
+if($1=="Mg") z=12;
+if($1=="Al") z=13;
+if($1=="Si") z=14;
+if($1=="P") z=15;
+if($1=="S") z=16;
+if($1=="Cl") z=17;
+if($1=="Ar") z=18;
+if($1=="K") z=19;
+if($1=="Ca") z=20;
+if($1=="Sc") z=21;
+if($1=="Ti") z=22;
+if($1=="V") z=23;
+if($1=="Cr") z=24;
+if($1=="Mn") z=25;
+if($1=="Fe") z=26;
+if($1=="Co") z=27;
+if($1=="Ni") z=28;
+if($1=="Cu") z=29;
+if($1=="Zn") z=30;
+if($1=="Ga") z=31;
+if($1=="Ge") z=32;
+if($1=="As") z=33;
+if($1=="Se") z=34;
+if($1=="Br") z=35;
+if($1=="Kr") z=36;
+if($1=="Rb") z=37;
+if($1=="Sr") z=38;
+if($1=="Y") z=39;
+if($1=="Zr") z=40;
+if($1=="Nb") z=41;
+if($1=="Mo") z=42;
+if($1=="Tc") z=43;
+if($1=="Ru") z=44;
+if($1=="Rh") z=45;
+if($1=="Pd") z=46;
+if($1=="Ag") z=47;
+if($1=="Cd") z=48;
+if($1=="In") z=49;
+if($1=="Sn") z=50;
+if($1=="Sb") z=51;
+if($1=="Te") z=52;
+if($1=="I") z=53;
+if($1=="Xe") z=54;
+if($1=="Cs") z=55;
+if($1=="Ba") z=56;
+if($1=="La") z=57;
+if($1=="Ce") z=58;
+if($1=="Pr") z=59;
+if($1=="Nd") z=60;
+if($1=="Pm") z=61;
+if($1=="Sm") z=62;
+if($1=="Eu") z=63;
+if($1=="Gd") z=64;
+if($1=="Tb") z=65;
+if($1=="Dy") z=66;
+if($1=="Ho") z=67;
+if($1=="Er") z=68;
+if($1=="Tm") z=69;
+if($1=="Yb") z=70;
+if($1=="Lu") z=71;
+if($1=="Hf") z=72;
+if($1=="Ta") z=73;
+if($1=="W") z=74;
+if($1=="Re") z=75;
+if($1=="Os") z=76;
+if($1=="Ir") z=77;
+if($1=="Pt") z=78;
+if($1=="Au") z=79;
+if($1=="Hg") z=80;
+if($1=="Tl") z=81;
+if($1=="Pb") z=82;
+if($1=="Bi") z=83;
+if($1=="Po") z=84;
+if($1=="At") z=85;
+if($1=="Rn") z=86;
+if($1=="Fr") z=87;
+if($1=="Ra") z=88;
+if($1=="Ac") z=89;
+if($1=="Th") z=90;
+if($1=="Pa") z=91;
+if($1=="U") z=92;
+if($1=="Np") z=93;
+if($1=="Pu") z=94;
+if($1=="Am") z=95;
+if($1=="Cm") z=96;
+if($1=="Bk") z=97;
+if($1=="Cf") z=98;
+if($1=="Es") z=99;
+if($1=="Fm") z=100;
+if($1=="Md") z=101;
+if($1=="No") z=102;
+if($1=="Lr") z=103;
+if($1=="Rf") z=104;
+if($1=="Db") z=105;
+if($1=="Sg") z=106;
+if($1=="Bh") z=107;
+if($1=="Hs") z=108;
+if($1=="Mt") z=109;
+if($1=="Xx") z=0;
+if($1=="X") z=0;
+if($1=="Tv") z=112;
+printf("%s %0.1f %s %s %s\n",$1,z,$9,$10,$11);
+if(i==natoms+3) printf(" $END\n")
+}
+
+}
+END{
+}' $fileinp > $fn
+echo $fn
+cat $fn
+nproc=1
+rm $HOME/scr/$fn*
+$RUNGAMESS $fn 00 $nproc >&  $filename.log
+tmpfile=${ffn}.tmp
+grep 'FINAL ' $filename.log | tail -1 | grep 'ENERGY IS'  > ${ffn}.tmp
+grep 'HEAT OF FORMATION IS' $filename.log | tail -1 > ${ffn}.tmp
+echo tmp=$tmpfile
+cat $tmpfile
+energy=$(awk '{printf("%f",$5/627.50944796);}' $tmpfile)
+echo ENERGY=$energy
+awk 'BEGIN{
+id=0
+AUTODEB=2.54158059
+}
+{
+	if(id==1) { id++; printf("%f\n%f\n%f\n",$1/AUTODEB,$2/AUTODEB,$3/AUTODEB); }  
+	if($0 ~ /(DEBYE)/) { id=1;}
+}' $filename.log > $tmpfile
+
+cat $tmpfile | tail -3 > ${tmpfile}_1
+mv  ${tmpfile}_1 $tmpfile 
+read mux muy muz <<< $(cat $tmpfile | awk '{ print $1; }')
+echo Mu = $mux $muy $muz
+echo $outname
+echo $energy >  $outname
+echo $mux $muy $muz >>  $outname
+echo 
+awk 'BEGIN{
+id=0
+}
+{
+	if(id==1)
+	{ 
+		if(NF != 5) id++; 
+		else printf("%f %f %f\n",$3,$4,$5);
+	}  
+	if($0 ~ /UNITS ARE HARTREE/) if($0 ~ /BOHR/) { id=1;}
+}' $filename.log >>  $outname
+
+grep 'CHARGE OF MOLECULE' $filename.log | tail -1 > ${tmpfile}
+#cat $tmpfile
+read charge <<< $(cat $tmpfile | awk '{ print $5; }')
+grep 'SPIN MULTIPLICITY ' $filename.log | tail -1 > ${tmpfile}
+#cat $tmpfile
+read spin <<< $(cat $tmpfile | awk '{ print $4; }')
+grep 'TOTAL NUMBER OF ATOMS ' $filename.log | tail -1 > ${tmpfile}
+#cat $tmpfile
+read natoms <<< $(cat $tmpfile | awk '{ print $6; }')
+
+awk 'BEGIN{
+id=0
+idd=0
+}
+{
+	if(idd==1) if(NF<5) { idd=0; id=0;}
+	if(idd==1) { printf(" %s %s %s %s 0 0.0 2 1 %s %s %s 0\n",$1,$1,$1,$1,$3,$4,$5); }  
+	if($0 ~ /EQUILIBRIUM GEOMETRY LOCATED/) { id=1;}
+	if($0 ~ /THE GEOMETRY SEARCH IS NOT CONVERGED/) { id=1;}
+	if(id==1) if($0 ~ /-----------------------------------/) { idd=1;}
+}' $filename.log > $tmpfile
+
+grep 'THE GEOMETRY SEARCH IS NOT CONVERGED' $filename.log
+
+nl=`wc -l < $tmpfile`
+if [ $nl != "0" ]
+then
+echo Geometry >> $outname
+echo $natoms $charge $spin >> $outname
+cat $tmpfile >> $outname
+fi
+
+
+
+echo file=$outname
+cat $outname
+
+rm $tmpfile
+rm $fn
+rm $filename.log
+

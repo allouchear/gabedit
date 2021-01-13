@@ -1,0 +1,11 @@
+extern GtkWidget* orcaWin;
+extern OrcaMolecule orcaMolecule;
+extern OrcaColorFore orcaColorFore;
+extern OrcaColorBack orcaColorBack;
+extern OrcaBasis orcaBasis;
+extern OrcaGuessWaveFunction orcaGuessWaveFunction;
+
+extern OrcaFunctional* functionals;
+extern OrcaStdFunctional* stdFunctionals;
+extern gdouble* sumFunctionals;
+

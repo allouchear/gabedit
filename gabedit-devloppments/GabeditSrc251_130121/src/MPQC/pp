@@ -1,0 +1,15 @@
+
+extern GtkWidget* mpqcWin;
+extern MPQCMolecule mpqcMolecule;
+extern MPQCColorFore mpqcColorFore;
+extern MPQCColorBack mpqcColorBack;
+extern MPQCMole mpqcMole;
+extern MPQCGuessWaveFunction mpqcGuessWaveFunction;
+extern MPQCMpqc mpqcMpqc;
+extern MPQCBasis mpqcBasis;
+
+extern MPQCFunctional* functionals;
+extern MPQCStdFunctional* stdFunctionals;
+extern gdouble* sumFunctionals;
+extern MPQCOptimization mpqcOptimization;
+

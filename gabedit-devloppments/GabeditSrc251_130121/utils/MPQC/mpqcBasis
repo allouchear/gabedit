@@ -1,0 +1,959 @@
+NAtoms = 104
+Atom  H
+40
+H STO-2G 
+H STO-3G 
+H STO-3G* 
+H STO-6G 
+H MINI#(Huzinaga) 
+H MINI#(Scaled) 
+H MIDI#(Huzinaga) 
+H DZ#(Dunning) 
+H DZP#(Dunning) 
+H DZP#+#Diffuse#(Dunning) 
+H 3-21G 
+H 3-21G* 
+H 3-21++G 
+H 3-21++G* 
+H 4-31G 
+H 4-31G* 
+H 4-31G** 
+H 6-31G 
+H 6-31G* 
+H 6-31G** 
+H 6-31+G* 
+H 6-31++G 
+H 6-31++G* 
+H 6-31++G** 
+H 6-311G 
+H 6-311G* 
+H 6-311G** 
+H 6-311G(2df,2pd) 
+H 6-311++G** 
+H 6-311++G(2d,2p) 
+H 6-311++G(3df,3pd) 
+H cc-pVDZ 
+H cc-pVTZ 
+H cc-pVQZ 
+H cc-pV5Z 
+H aug-cc-pVDZ 
+H aug-cc-pVTZ 
+H aug-cc-pVQZ 
+H aug-cc-pV5Z 
+H NASA#Ames#ANO 
+Atom  He
+36
+He STO-2G 
+He STO-3G 
+He STO-3G* 
+He STO-6G 
+He MINI#(Huzinaga) 
+He MINI#(Scaled) 
+He MIDI#(Huzinaga) 
+He 3-21G 
+He 3-21G* 
+He 3-21++G 
+He 3-21++G* 
+He 4-31G 
+He 4-31G* 
+He 4-31G** 
+He 6-31G 
+He 6-31G* 
+He 6-31G** 
+He 6-31+G* 
+He 6-31++G 
+He 6-31++G* 
+He 6-31++G** 
+He 6-311G 
+He 6-311G* 
+He 6-311G** 
+He 6-311G(2df,2pd) 
+He 6-311++G** 
+He 6-311++G(2d,2p) 
+He 6-311++G(3df,3pd) 
+He cc-pVDZ 
+He cc-pVTZ 
+He cc-pVQZ 
+He cc-pV5Z 
+He aug-cc-pVDZ 
+He aug-cc-pVTZ 
+He aug-cc-pVQZ 
+He aug-cc-pV5Z 
+Atom  Li
+31
+Li STO-2G 
+Li STO-3G 
+Li STO-3G* 
+Li STO-6G 
+Li MINI#(Huzinaga) 
+Li MINI#(Scaled) 
+Li MIDI#(Huzinaga) 
+Li DZ#(Dunning) 
+Li DZP#(Dunning) 
+Li 3-21G 
+Li 3-21G* 
+Li 3-21++G 
+Li 3-21++G* 
+Li 4-31G 
+Li 4-31G* 
+Li 4-31G** 
+Li 6-31G 
+Li 6-31G* 
+Li 6-31G** 
+Li 6-31+G* 
+Li 6-31++G 
+Li 6-31++G* 
+Li 6-31++G** 
+Li 6-311G 
+Li 6-311G* 
+Li 6-311G** 
+Li 6-311G(2df,2pd) 
+Li 6-311++G** 
+Li 6-311++G(2d,2p) 
+Li 6-311++G(3df,3pd) 
+Li cc-pV5Z 
+Atom  Be
+29
+Be STO-2G 
+Be STO-3G 
+Be STO-3G* 
+Be STO-6G 
+Be MINI#(Huzinaga) 
+Be MINI#(Scaled) 
+Be MIDI#(Huzinaga) 
+Be 3-21G 
+Be 3-21G* 
+Be 3-21++G 
+Be 3-21++G* 
+Be 4-31G 
+Be 4-31G* 
+Be 4-31G** 
+Be 6-31G 
+Be 6-31G* 
+Be 6-31G** 
+Be 6-31+G* 
+Be 6-31++G 
+Be 6-31++G* 
+Be 6-31++G** 
+Be 6-311G 
+Be 6-311G* 
+Be 6-311G** 
+Be 6-311G(2df,2pd) 
+Be 6-311++G** 
+Be 6-311++G(2d,2p) 
+Be 6-311++G(3df,3pd) 
+Be cc-pV5Z 
+Atom  B
+47
+B STO-2G 
+B STO-3G 
+B STO-3G* 
+B MINI#(Huzinaga) 
+B MINI#(Scaled) 
+B MIDI#(Huzinaga) 
+B DZ#(Dunning) 
+B DZP#(Dunning) 
+B DZP#+#Diffuse#(Dunning) 
+B 3-21G 
+B 3-21G* 
+B 3-21++G 
+B 3-21++G* 
+B 4-31G 
+B 4-31G* 
+B 4-31G** 
+B 6-31G 
+B 6-31G* 
+B 6-31G** 
+B 6-31+G* 
+B 6-31++G 
+B 6-31++G* 
+B 6-31++G** 
+B 6-311G 
+B 6-311G* 
+B 6-311G** 
+B 6-311G(2df,2pd) 
+B 6-311++G** 
+B 6-311++G(2d,2p) 
+B 6-311++G(3df,3pd) 
+B cc-pVDZ 
+B cc-pVTZ 
+B cc-pVQZ 
+B cc-pV5Z 
+B aug-cc-pVDZ 
+B aug-cc-pVTZ 
+B aug-cc-pVQZ 
+B aug-cc-pV5Z 
+B cc-pCVDZ 
+B cc-pCVTZ 
+B cc-pCVQZ 
+B cc-pCV5Z 
+B aug-cc-pCVDZ 
+B aug-cc-pCVTZ 
+B aug-cc-pCVQZ 
+B aug-cc-pCV5Z 
+B NASA#Ames#ANO 
+Atom  C
+48
+C STO-2G 
+C STO-3G 
+C STO-3G* 
+C STO-6G 
+C MINI#(Huzinaga) 
+C MINI#(Scaled) 
+C MIDI#(Huzinaga) 
+C DZ#(Dunning) 
+C DZP#(Dunning) 
+C DZP#+#Diffuse#(Dunning) 
+C 3-21G 
+C 3-21G* 
+C 3-21++G 
+C 3-21++G* 
+C 4-31G 
+C 4-31G* 
+C 4-31G** 
+C 6-31G 
+C 6-31G* 
+C 6-31G** 
+C 6-31+G* 
+C 6-31++G 
+C 6-31++G* 
+C 6-31++G** 
+C 6-311G 
+C 6-311G* 
+C 6-311G** 
+C 6-311G(2df,2pd) 
+C 6-311++G** 
+C 6-311++G(2d,2p) 
+C 6-311++G(3df,3pd) 
+C cc-pVDZ 
+C cc-pVTZ 
+C cc-pVQZ 
+C cc-pV5Z 
+C aug-cc-pVDZ 
+C aug-cc-pVTZ 
+C aug-cc-pVQZ 
+C aug-cc-pV5Z 
+C cc-pCVDZ 
+C cc-pCVTZ 
+C cc-pCVQZ 
+C cc-pCV5Z 
+C aug-cc-pCVDZ 
+C aug-cc-pCVTZ 
+C aug-cc-pCVQZ 
+C aug-cc-pCV5Z 
+C NASA#Ames#ANO 
+Atom  N
+48
+N STO-2G 
+N STO-3G 
+N STO-3G* 
+N STO-6G 
+N MINI#(Huzinaga) 
+N MINI#(Scaled) 
+N MIDI#(Huzinaga) 
+N DZ#(Dunning) 
+N DZP#(Dunning) 
+N DZP#+#Diffuse#(Dunning) 
+N 3-21G 
+N 3-21G* 
+N 3-21++G 
+N 3-21++G* 
+N 4-31G 
+N 4-31G* 
+N 4-31G** 
+N 6-31G 
+N 6-31G* 
+N 6-31G** 
+N 6-31+G* 
+N 6-31++G 
+N 6-31++G* 
+N 6-31++G** 
+N 6-311G 
+N 6-311G* 
+N 6-311G** 
+N 6-311G(2df,2pd) 
+N 6-311++G** 
+N 6-311++G(2d,2p) 
+N 6-311++G(3df,3pd) 
+N cc-pVDZ 
+N cc-pVTZ 
+N cc-pVQZ 
+N cc-pV5Z 
+N aug-cc-pVDZ 
+N aug-cc-pVTZ 
+N aug-cc-pVQZ 
+N aug-cc-pV5Z 
+N cc-pCVDZ 
+N cc-pCVTZ 
+N cc-pCVQZ 
+N cc-pCV5Z 
+N aug-cc-pCVDZ 
+N aug-cc-pCVTZ 
+N aug-cc-pCVQZ 
+N aug-cc-pCV5Z 
+N NASA#Ames#ANO 
+Atom  O
+48
+O STO-2G 
+O STO-3G 
+O STO-3G* 
+O STO-6G 
+O MINI#(Huzinaga) 
+O MINI#(Scaled) 
+O MIDI#(Huzinaga) 
+O DZ#(Dunning) 
+O DZP#(Dunning) 
+O DZP#+#Diffuse#(Dunning) 
+O 3-21G 
+O 3-21G* 
+O 3-21++G 
+O 3-21++G* 
+O 4-31G 
+O 4-31G* 
+O 4-31G** 
+O 6-31G 
+O 6-31G* 
+O 6-31G** 
+O 6-31+G* 
+O 6-31++G 
+O 6-31++G* 
+O 6-31++G** 
+O 6-311G 
+O 6-311G* 
+O 6-311G** 
+O 6-311G(2df,2pd) 
+O 6-311++G** 
+O 6-311++G(2d,2p) 
+O 6-311++G(3df,3pd) 
+O cc-pVDZ 
+O cc-pVTZ 
+O cc-pVQZ 
+O cc-pV5Z 
+O aug-cc-pVDZ 
+O aug-cc-pVTZ 
+O aug-cc-pVQZ 
+O aug-cc-pV5Z 
+O cc-pCVDZ 
+O cc-pCVTZ 
+O cc-pCVQZ 
+O cc-pCV5Z 
+O aug-cc-pCVDZ 
+O aug-cc-pCVTZ 
+O aug-cc-pCVQZ 
+O aug-cc-pCV5Z 
+O NASA#Ames#ANO 
+Atom  F
+48
+F STO-2G 
+F STO-3G 
+F STO-3G* 
+F STO-6G 
+F MINI#(Huzinaga) 
+F MINI#(Scaled) 
+F MIDI#(Huzinaga) 
+F DZ#(Dunning) 
+F DZP#(Dunning) 
+F DZP#+#Diffuse#(Dunning) 
+F 3-21G 
+F 3-21G* 
+F 3-21++G 
+F 3-21++G* 
+F 4-31G 
+F 4-31G* 
+F 4-31G** 
+F 6-31G 
+F 6-31G* 
+F 6-31G** 
+F 6-31+G* 
+F 6-31++G 
+F 6-31++G* 
+F 6-31++G** 
+F 6-311G 
+F 6-311G* 
+F 6-311G** 
+F 6-311G(2df,2pd) 
+F 6-311++G** 
+F 6-311++G(2d,2p) 
+F 6-311++G(3df,3pd) 
+F cc-pVDZ 
+F cc-pVTZ 
+F cc-pVQZ 
+F cc-pV5Z 
+F aug-cc-pVDZ 
+F aug-cc-pVTZ 
+F aug-cc-pVQZ 
+F aug-cc-pV5Z 
+F cc-pCVDZ 
+F cc-pCVTZ 
+F cc-pCVQZ 
+F cc-pCV5Z 
+F aug-cc-pCVDZ 
+F aug-cc-pCVTZ 
+F aug-cc-pCVQZ 
+F aug-cc-pCV5Z 
+F NASA#Ames#ANO 
+Atom  Ne
+46
+Ne STO-2G 
+Ne STO-3G 
+Ne STO-3G* 
+Ne STO-6G 
+Ne MINI#(Huzinaga) 
+Ne MINI#(Scaled) 
+Ne MIDI#(Huzinaga) 
+Ne DZ#(Dunning) 
+Ne DZP#(Dunning) 
+Ne DZP#+#Diffuse#(Dunning) 
+Ne 3-21G 
+Ne 3-21G* 
+Ne 3-21++G 
+Ne 3-21++G* 
+Ne 4-31G 
+Ne 4-31G* 
+Ne 4-31G** 
+Ne 6-31G 
+Ne 6-31G* 
+Ne 6-31G** 
+Ne 6-31+G* 
+Ne 6-31++G 
+Ne 6-31++G* 
+Ne 6-31++G** 
+Ne 6-311G 
+Ne 6-311G* 
+Ne 6-311G** 
+Ne 6-311G(2df,2pd) 
+Ne 6-311++G** 
+Ne 6-311++G(2d,2p) 
+Ne 6-311++G(3df,3pd) 
+Ne cc-pVDZ 
+Ne cc-pVTZ 
+Ne cc-pVQZ 
+Ne cc-pV5Z 
+Ne aug-cc-pVDZ 
+Ne aug-cc-pVTZ 
+Ne aug-cc-pVQZ 
+Ne aug-cc-pV5Z 
+Ne cc-pCVDZ 
+Ne cc-pCVTZ 
+Ne cc-pCVQZ 
+Ne cc-pCV5Z 
+Ne aug-cc-pCVTZ 
+Ne aug-cc-pCVQZ 
+Ne NASA#Ames#ANO 
+Atom  Na
+22
+Na STO-2G 
+Na STO-3G 
+Na STO-3G* 
+Na STO-6G 
+Na MINI#(Huzinaga) 
+Na MINI#(Scaled) 
+Na MIDI#(Huzinaga) 
+Na 3-21G 
+Na 3-21G* 
+Na 3-21++G 
+Na 3-21++G* 
+Na 6-31G 
+Na 6-31G* 
+Na 6-31G** 
+Na 6-31+G* 
+Na 6-31++G 
+Na 6-31++G* 
+Na 6-31++G** 
+Na 6-311G 
+Na 6-311G* 
+Na 6-311G** 
+Na 6-311++G(3df,3pd) 
+Atom  Mg
+21
+Mg STO-2G 
+Mg STO-3G 
+Mg STO-3G* 
+Mg STO-6G 
+Mg MINI#(Huzinaga) 
+Mg MINI#(Scaled) 
+Mg 3-21G 
+Mg 3-21G* 
+Mg 3-21++G 
+Mg 3-21++G* 
+Mg 6-31G 
+Mg 6-31G* 
+Mg 6-31G** 
+Mg 6-31+G* 
+Mg 6-31++G 
+Mg 6-31++G* 
+Mg 6-31++G** 
+Mg 6-311G 
+Mg 6-311G* 
+Mg 6-311G** 
+Mg 6-311++G(3df,3pd) 
+Atom  Al
+32
+Al STO-2G 
+Al STO-3G 
+Al STO-3G* 
+Al STO-6G 
+Al MINI#(Huzinaga) 
+Al MINI#(Scaled) 
+Al DZ#(Dunning) 
+Al DZP#(Dunning) 
+Al 3-21G 
+Al 3-21G* 
+Al 3-21++G 
+Al 3-21++G* 
+Al 6-31G 
+Al 6-31G* 
+Al 6-31G** 
+Al 6-31+G* 
+Al 6-31++G 
+Al 6-31++G* 
+Al 6-31++G** 
+Al 6-311G 
+Al 6-311G* 
+Al 6-311G** 
+Al 6-311++G(3df,3pd) 
+Al cc-pVDZ 
+Al cc-pVTZ 
+Al cc-pVQZ 
+Al cc-pV5Z 
+Al aug-cc-pVDZ 
+Al aug-cc-pVTZ 
+Al aug-cc-pVQZ 
+Al aug-cc-pV5Z 
+Al NASA#Ames#ANO 
+Atom  Si
+31
+Si STO-2G 
+Si STO-3G 
+Si STO-3G* 
+Si STO-6G 
+Si MINI#(Huzinaga) 
+Si MINI#(Scaled) 
+Si DZ#(Dunning) 
+Si DZP#(Dunning) 
+Si 3-21G 
+Si 3-21G* 
+Si 3-21++G 
+Si 3-21++G* 
+Si 6-31G 
+Si 6-31G* 
+Si 6-31G** 
+Si 6-31+G* 
+Si 6-31++G 
+Si 6-31++G* 
+Si 6-31++G** 
+Si 6-311G 
+Si 6-311G* 
+Si 6-311G** 
+Si 6-311++G(3df,3pd) 
+Si cc-pVDZ 
+Si cc-pVTZ 
+Si cc-pVQZ 
+Si cc-pV5Z 
+Si aug-cc-pVDZ 
+Si aug-cc-pVTZ 
+Si aug-cc-pVQZ 
+Si aug-cc-pV5Z 
+Atom  P
+35
+P STO-2G 
+P STO-3G 
+P STO-3G* 
+P STO-6G 
+P MINI#(Huzinaga) 
+P MINI#(Scaled) 
+P DZ#(Dunning) 
+P DZP#(Dunning) 
+P 3-21G 
+P 3-21G* 
+P 3-21++G 
+P 3-21++G* 
+P 4-31G 
+P 4-31G* 
+P 4-31G** 
+P 6-31G 
+P 6-31G* 
+P 6-31G** 
+P 6-31+G* 
+P 6-31++G 
+P 6-31++G* 
+P 6-31++G** 
+P 6-311G 
+P 6-311G* 
+P 6-311G** 
+P 6-311++G(3df,3pd) 
+P cc-pVDZ 
+P cc-pVTZ 
+P cc-pVQZ 
+P cc-pV5Z 
+P aug-cc-pVDZ 
+P aug-cc-pVTZ 
+P aug-cc-pVQZ 
+P aug-cc-pV5Z 
+P NASA#Ames#ANO 
+Atom  S
+34
+S STO-2G 
+S STO-3G 
+S STO-3G* 
+S STO-6G 
+S MINI#(Huzinaga) 
+S MINI#(Scaled) 
+S DZ#(Dunning) 
+S DZP#(Dunning) 
+S 3-21G 
+S 3-21G* 
+S 3-21++G 
+S 3-21++G* 
+S 4-31G 
+S 4-31G* 
+S 4-31G** 
+S 6-31G 
+S 6-31G* 
+S 6-31G** 
+S 6-31+G* 
+S 6-31++G 
+S 6-31++G* 
+S 6-31++G** 
+S 6-311G 
+S 6-311G* 
+S 6-311G** 
+S 6-311++G(3df,3pd) 
+S cc-pVDZ 
+S cc-pVTZ 
+S cc-pVQZ 
+S cc-pV5Z 
+S aug-cc-pVDZ 
+S aug-cc-pVTZ 
+S aug-cc-pVQZ 
+S aug-cc-pV5Z 
+Atom  Cl
+34
+Cl STO-2G 
+Cl STO-3G 
+Cl STO-3G* 
+Cl STO-6G 
+Cl MINI#(Huzinaga) 
+Cl MINI#(Scaled) 
+Cl DZ#(Dunning) 
+Cl DZP#(Dunning) 
+Cl 3-21G 
+Cl 3-21G* 
+Cl 3-21++G 
+Cl 3-21++G* 
+Cl 4-31G 
+Cl 4-31G* 
+Cl 4-31G** 
+Cl 6-31G 
+Cl 6-31G* 
+Cl 6-31G** 
+Cl 6-31+G* 
+Cl 6-31++G 
+Cl 6-31++G* 
+Cl 6-31++G** 
+Cl 6-311G 
+Cl 6-311G* 
+Cl 6-311G** 
+Cl 6-311++G(3df,3pd) 
+Cl cc-pVDZ 
+Cl cc-pVTZ 
+Cl cc-pVQZ 
+Cl cc-pV5Z 
+Cl aug-cc-pVDZ 
+Cl aug-cc-pVTZ 
+Cl aug-cc-pVQZ 
+Cl aug-cc-pV5Z 
+Atom  Ar
+29
+Ar STO-2G 
+Ar STO-3G 
+Ar STO-3G* 
+Ar STO-6G 
+Ar MINI#(Huzinaga) 
+Ar MINI#(Scaled) 
+Ar 3-21G 
+Ar 3-21G* 
+Ar 3-21++G 
+Ar 3-21++G* 
+Ar 6-31G 
+Ar 6-31G* 
+Ar 6-31G** 
+Ar 6-31+G* 
+Ar 6-31++G 
+Ar 6-31++G* 
+Ar 6-31++G** 
+Ar 6-311G 
+Ar 6-311G* 
+Ar 6-311G** 
+Ar 6-311++G(3df,3pd) 
+Ar cc-pVDZ 
+Ar cc-pVTZ 
+Ar cc-pVQZ 
+Ar cc-pV5Z 
+Ar aug-cc-pVDZ 
+Ar aug-cc-pVTZ 
+Ar aug-cc-pVQZ 
+Ar aug-cc-pV5Z 
+Atom  K
+6
+K STO-2G 
+K STO-3G 
+K STO-6G 
+K MINI#(Huzinaga) 
+K MINI#(Scaled) 
+K 3-21G 
+Atom  Ca
+6
+Ca STO-2G 
+Ca STO-3G 
+Ca STO-6G 
+Ca MINI#(Huzinaga) 
+Ca MINI#(Scaled) 
+Ca 3-21G 
+Atom  Sc
+3
+Sc STO-3G 
+Sc STO-6G 
+Sc 3-21G 
+Atom  Ti
+4
+Ti STO-3G 
+Ti STO-6G 
+Ti 3-21G 
+Ti NASA#Ames#ANO 
+Atom  V
+3
+V STO-3G 
+V STO-6G 
+V 3-21G 
+Atom  Cr
+3
+Cr STO-3G 
+Cr STO-6G 
+Cr 3-21G 
+Atom  Mn
+3
+Mn STO-3G 
+Mn STO-6G 
+Mn 3-21G 
+Atom  Fe
+4
+Fe STO-3G 
+Fe STO-6G 
+Fe 3-21G 
+Fe NASA#Ames#ANO 
+Atom  Co
+3
+Co STO-3G 
+Co STO-6G 
+Co 3-21G 
+Atom  Ni
+4
+Ni STO-3G 
+Ni STO-6G 
+Ni 3-21G 
+Ni NASA#Ames#ANO 
+Atom  Cu
+3
+Cu STO-3G 
+Cu STO-6G 
+Cu 3-21G 
+Atom  Zn
+3
+Zn STO-3G 
+Zn STO-6G 
+Zn 3-21G 
+Atom  Ga
+8
+Ga STO-3G 
+Ga STO-6G 
+Ga 3-21G 
+Ga 6-311G 
+Ga 6-311G* 
+Ga 6-311G** 
+Ga cc-pVDZ 
+Ga cc-pVTZ 
+Atom  Ge
+8
+Ge STO-3G 
+Ge STO-6G 
+Ge 3-21G 
+Ge 6-311G 
+Ge 6-311G* 
+Ge 6-311G** 
+Ge cc-pVDZ 
+Ge cc-pVTZ 
+Atom  As
+8
+As STO-3G 
+As STO-6G 
+As 3-21G 
+As 6-311G 
+As 6-311G* 
+As 6-311G** 
+As cc-pVDZ 
+As cc-pVTZ 
+Atom  Se
+8
+Se STO-3G 
+Se STO-6G 
+Se 3-21G 
+Se 6-311G 
+Se 6-311G* 
+Se 6-311G** 
+Se cc-pVDZ 
+Se cc-pVTZ 
+Atom  Br
+7
+Br STO-3G 
+Br STO-6G 
+Br 3-21G 
+Br 6-311G 
+Br 6-311G* 
+Br 6-311G** 
+Br cc-pVDZ 
+Atom  Kr
+7
+Kr STO-3G 
+Kr STO-6G 
+Kr 3-21G 
+Kr 6-311G 
+Kr 6-311G* 
+Kr 6-311G** 
+Kr cc-pVDZ 
+Atom  Rb
+0
+Atom  Sr
+0
+Atom  Y
+0
+Atom  Zr
+0
+Atom  Nb
+0
+Atom  Mo
+0
+Atom  Tc
+0
+Atom  Ru
+0
+Atom  Rh
+0
+Atom  Pd
+0
+Atom  Ag
+0
+Atom  Cd
+0
+Atom  In
+0
+Atom  Sn
+0
+Atom  Sb
+0
+Atom  Te
+0
+Atom  I
+0
+Atom  Xe
+0
+Atom  Cs
+0
+Atom  Ba
+0
+Atom  La
+0
+Atom  Hf
+0
+Atom  Ta
+0
+Atom  W
+0
+Atom  Re
+0
+Atom  Os
+0
+Atom  Ir
+0
+Atom  Pt
+0
+Atom  Au
+0
+Atom  Hg
+0
+Atom  Tl
+0
+Atom  Pb
+0
+Atom  Bi
+0
+Atom  Po
+0
+Atom  At
+0
+Atom  Rn
+0
+Atom  Fr
+0
+Atom  Ra
+0
+Atom  Ac
+0
+Atom  Ce
+0
+Atom  Pr
+0
+Atom  Nd
+0
+Atom  Pm
+0
+Atom  Sm
+0
+Atom  Eu
+0
+Atom  Gd
+0
+Atom  Tb
+0
+Atom  Dy
+0
+Atom  Ho
+0
+Atom  Er
+0
+Atom  Tm
+0
+Atom  Yb
+0
+Atom  Lu
+0
+Atom  X
+0
+Atom  Th
+0
+Atom  Pa
+0
+Atom  U
+0
+Atom  Np
+0
+Atom  Pu
+0
+Atom  Am
+0
+Atom  Cm
+0
+Atom  Bk
+0
+Atom  Cf
+0
+Atom  Es
+0
+Atom  Fm
+0
+Atom  Md
+0
+Atom  No
+0
+Atom  Lr
+0

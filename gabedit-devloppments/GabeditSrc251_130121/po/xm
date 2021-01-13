@@ -1,0 +1,2 @@
+msgfmt $1.po -o gabedit.mo
+mv gabedit.mo ../locale/$1/LC_MESSAGES/.

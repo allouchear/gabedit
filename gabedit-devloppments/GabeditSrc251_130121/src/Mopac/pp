@@ -1,0 +1,8 @@
+extern GtkWidget* mopacWin;
+extern MopacMolecule mopacMolecule;
+extern MopacColorFore mopacColorFore;
+extern MopacColorBack mopacColorBack;
+
+extern MopacFunctional* functionals;
+extern MopacStdFunctional* stdFunctionals;
+extern gdouble* sumFunctionals;

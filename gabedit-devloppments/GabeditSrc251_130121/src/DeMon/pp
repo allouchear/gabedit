@@ -1,0 +1,10 @@
+extern GtkWidget* demonWin;
+extern DeMonMolecule demonMolecule;
+extern DeMonColorFore demonColorFore;
+extern DeMonColorBack demonColorBack;
+extern DeMonBasis demonBasis;
+extern DeMonGuessWaveFunction demonGuessWaveFunction;
+
+extern DeMonFunctional* functionals;
+extern DeMonStdFunctional* stdFunctionals;
+extern gdouble* sumFunctionals;

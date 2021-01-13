@@ -1,0 +1,10 @@
+extern GtkWidget* gamessWin;
+extern GamessMolecule gamessMolecule;
+extern GamessColorFore gamessColorFore;
+extern GamessColorBack gamessColorBack;
+extern GamessBasis gamessBasis;
+
+extern GamessFunctional* functionals;
+extern GamessStdFunctional* stdFunctionals;
+extern gdouble* sumFunctionals;
+

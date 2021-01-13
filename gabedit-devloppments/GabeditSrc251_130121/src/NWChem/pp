@@ -1,0 +1,10 @@
+extern GtkWidget* nwchemWin;
+extern NWChemMolecule nwchemMolecule;
+extern NWChemColorFore nwchemColorFore;
+extern NWChemColorBack nwchemColorBack;
+extern NWChemBasis nwchemBasis;
+extern NWChemGuessWaveFunction nwchemGuessWaveFunction;
+
+extern NWChemFunctional* functionalsNWC;
+extern NWChemStdFunctional* stdFunctionalsNWC;
+extern gdouble* sumFunctionalsNWC;

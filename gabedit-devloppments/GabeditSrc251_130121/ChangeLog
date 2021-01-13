@@ -1,0 +1,654 @@
+26 August 2020
+	Compute Cremer-Pople parameters for pyranose saccharide
+
+29 July 2020
+	Compute the type of conformer for a saccharide : pyranose (1C4, 4C1, ....) & furanose (3E, 2T2, ....)
+	Gabedit can Compute the type of conformer for one molecule or for several ones (Animation/MD or Animation/Geom. Conv of Display window)
+
+12 May October 2020
+	remove gdk_gl_font_use_pango_font.
+	new style of labels on GL windows
+
+31 October 2019
+	Rotate fragment without rotation of all structure
+
+13 June 2019
+	Change Error in Warning if the electronic density is negative during  NCI analysis
+
+12 June 2019
+	Remove call fit_windows_position
+
+22 January 2019
+	minor bug fixed : set origin to center of molecule
+
+17 January 2019
+	Gabedit can now read orbitals& geometry from WFX file.
+	It can also export orbitals in a WFX file.
+
+5 December 2018
+	Mopac gradients output file format changed in 2018. Gabedit supports now this new format.
+
+31 October 2018
+	Export structure in CIF file (with or without symmetry operators).
+	Reduction to primitive Cell.
+	Reduction to Niggli or Delaunay Cell.
+	Computing of space group & symmetry operators.
+	Standardize cell (to conventional or primitive).
+	Generate k-points along high symmetry lines, for band structure calculations.
+	Get a prototype crystal from a database implemented in Gabedit.
+
+13 October 2018
+	read CIF file
+	Build slab : Crystallography/Build slab
+
+1 October 2018
+	read Direct poscar file : if u_<0 or u_i>1 for an atom=> shift to set it on the cell
+
+27 September 2018
+	Build superCell : Crystallography/Build superCell
+	Create clusters using Wulff construction : Crystallography/Build cluster using Wulff construction
+
+21 September 2018
+	UV spectrum can be converted in UV nm
+
+19 September 2018
+	Localization of Normal Modes.  References : 
+	Christoph R. Jacob & Markus Riher , J. Chem Phys. 130 (2009) 084106
+	Xiaolu Cheng, Justin J. Talbot, and Ryan P. Steele, J. Chem. Phys. 145 (2016) 124112;
+
+11 July 2018
+	Constraint bug(with recent versions of orca) in Orca input file fixed
+
+21 June 2018
+	Global and local reactivity indices (By Finite difference or Frontier Molecular Orbitals) : Display window/Reactvity Indices
+
+14 June 2018
+	New tool to compute the thermochemistry : Display window/Animation/Vibration
+	
+03 April 2017
+	Bug fixed for set center to origin
+	
+30 March 2017
+	The format of .hess and .out files of Orca4 are slightly different from them of Orca3. 
+	Gabedit can now read .hess and .out file of Orca4 (and Orca3)
+
+08 February 2017
+	Energy, geometry optimization, MD, MD Conformations search by an external (generic) program are
+	now supported. Gabedit creates an input file for the external program, this program compute energy, dipole, gradients or optimize the geometry.
+	This program must produce an output file supported by Gabedit.
+	The input file for the external program (or script) created by gabedit contains : 
+	First line is an integer : 0 for energy, 1 for gradients and 2 for optimization
+	Second line contains the text "Geometry"
+	third line number of atoms, charge and multiplicity of the molecule.
+	From forth line, symbol, mmtype, pdftype, esiduname, interger, charge, interger, integer, x y z and connectivities (xyz in Ang)
+	The external program must produce an output file with :
+	energy in atomic unit(au) in first line
+	dipole in au in the second line
+	gradients (in au) in next lines if gradients are required
+	Geometry in next lines if the geometry optimisation is required.
+	As examples, see :
+	The script runDFTBPGabedit (page web of gabedit) as an example 
+	The script runGamessPM3 is another example (page web of gabedit). 
+
+01 February 2017
+	Energy, geometry optimisation, MD, MD Conformations search by MMFF94, MMFF94s, UFF and Ghemical potentials are
+	now supported via openbabel. obgradient, obopt  programs and 2.3.2 folder parameters are needed and to be installed
+	in C:\OpenBabel under windows of $HOME/OpenBabel under unix (MacOS and Linux). The location of this folder
+	can be changed but the directory must be changed via Preferences/Other gabedit window.
+	OpenBabel directory can be download from Gabedit web page for each OS.
+
+24 January 2017
+	Compute the type of conformer for a saccharide (1C4, 4C1, ....)
+	Compute the anharmonic spectrum by QM/MMFF94 method using iGVPT2 program.
+	Read the harmonic and anharmonic spectra from an iGVPT2 output file.
+
+25 August 2016
+	DeMon2k is now supported by Gabedit. Gabedit can create input files, run demon and visualize the results using the molden file created by demon2k
+
+27 April 2016
+	Gabedit can now read the geometry from POSCAR and from vasprun.xml
+
+25 April 2016
+	Save geometry in POSCAR
+	Scale cell
+
+1 April 2016
+	Tools for VASP : 
+	Read dielectric function from a VASP xml file and compute optic properties Optic,
+	read data from vasprun.xml and plot DOS, pDOS and, Bands structures 
+
+8  September 2015
+	Gabedit can not read the hessian from .hess orca file. 
+	After reading of the hessian, Gabedit compute frequencies, modes and effective masses
+
+30 June 2015
+	Export in CChemI : update
+	Tv accepted (used by Gaussian and Mopac for periodic system)
+	Using Tv, Gabedit can generate other cells
+
+1  June 2015
+	QFF tools are implemented : Display/Vibration + main menu Tools/QFF
+
+11 march 2015
+	bug fixed : geometry in Display window if ECP used
+
+13 february 2015
+	read geometries (Opt or Dyn) from VASP OUTCAR file
+
+15 May 2014
+	Bug fixed to read dummy atom from molpro output file
+
+07 March 2014
+	Bug fixed to read the last geometry from mopac output file(no bug with the first geometry, no bugs if aux file)
+
+25 October 2013
+	new tool to remove half cube grid
+	remove implicit declaration warning
+
+24 October 2013
+	new tool to compute the integral of the function on the grid
+
+30 September 2013
+	run orca from Draw geometry : bug fixe (new input format with orca, without params)
+
+19 August 2013
+	read fchk file with d,f,.. orbitals bug fixed (There was no bug for reading  from a .log file)
+	PM7 added to list of Mopac hamiltonian 
+
+24 July 2013
+	Gabedit can now calculate the lambda diagnostic for CT (see Peach et al. J. Chem. Phys. 128, 044118 (2008))
+
+18 July 2013
+	Gabedit can now symmetrize a molecule (see Largent, RJ, Polik, WF, Schmidt, JR, J. Comput Chem. 33 (2012) 1637-1642)
+
+08 July 2013
+	new parsers to read : 
+		UV-Visible spectrum from a Gamess unrestricted TDDFT calculation
+		Raman spectrum from a QChem output file
+		Anharmonic IR spectrum(VT2) from a Gaussian (D01) output file
+		Anharmonic IR spectrum(VSCF, VSCF-PT2) from a Gamess output file
+
+02 May 2013
+	bug fixed : analytical gradient for PairWize potential with OMP
+
+02 April 2013
+	bug fixed : set distance, angle, dihedral in DragGeomCairo bug fixed
+	bug fixed : analytical gradient for PairWize potential 
+
+05 March 2013
+	bug fixed : read geometries convergence with non scf method from a molpro log files
+	New DFT functionals in Gaussian interface
+
+16 September 2012
+	bug fixed : read personal fragment under windows
+
+14 September 2012
+	set molecule in the standard orientation
+	Align selected and not selected fragments
+
+05 September 2012
+	Bug fixed : reading of the number occuped beta orbitals from a fchk file.
+
+25 July 2012
+	Bug fixed : read orbitals with ECP from a GAMESS-US output file
+
+20 July 2012
+	Analysis of Spatial Extent in Charge-Transfer Excitations implemented (See Le Bahers et al., J. Chem. Theory Comput. 2011, 7, 2498–2506)
+
+19 July 2012
+	NCI (non-covalent interactions index) analysis implemented (see Johnson et al., J. Am. Chem. Soc. 132, 6498 (2010))
+	Dummy atom in an orca input file bug fixed
+	Read orbitals&Geometry from an orca  ouput file with a dummy atom, bug fixed
+	Insert a non-bonded atom in "Draw geometry window" bug fixed
+
+07 July 2012 :
+	Psi4 partially supported : input file, geometries, frequencies, UV Spectrum
+
+20 June 2012 :
+	Bug fixed : computing of double&triple bonds
+
+10 June 2012 :
+	Warning with -Wformat have been fixed
+
+29 March 2012 :
+	Several Filters (Gaussian, Blackman, Blackman-Harris,...) implemented in XYPlot window (not fully tested)
+
+08 Marsh 2012 :
+	read gamess geometries in Display window :  bug fixed
+
+02 Marsh 2012 :
+	NBO basis (file .31) : read any type of orbitals
+
+27 February 2012 :
+	NBO basis (file .31) : read geometry
+
+06 October 2011 :
+	Orca input file : constraint removed if no fixed atom.
+
+03 October 2011 :
+	Bug fixed for saving geometry in mol format
+
+15 September 2011 :
+	Bug fixed for reading orbitals from a ORCA output file
+	Bug fixed for drawing colorcoded planes (under windows OS)
+
+13 Jyly 2011 :
+	NWChem is now supported
+	Geometry and charges can be read from a aimall sum file
+
+10 June 2011 :
+	Bug fixed for animated vibration/threshold
+	Bug fixed : orbitals molpro (define NOrb)
+
+1 June 2011 :
+	Group of the third atom can be rotated in Draw Geom window.
+
+30 April 2011 :
+	pair radial distribution
+	RMSD for a trajectory
+	Reading dipole from a ADMP output file and computing of auto correlation dipole function (not fully tested)
+
+7 April 2011 :
+	Fourier Transformation in GabexitXYPlot window (not fully tested)
+
+5 April 2011 :
+	Orthonormalization of Mopac MO (only normalisation on old versions)
+
+10 Mars 2011 :
+	Local rotation bug fixed
+	Screen capture (using png or tif) under window bug fixed 
+
+22 February 2011 :
+	Show cell in Display window
+	Bug : Update coordinates after a move fragment
+
+20 Junuary 2011 :
+	Read beta orbitals from fchk file : Bug fixed
+	Rotation of a fragment by mouse : bug fixed
+
+22 December 2010 :
+	new tools for select atoms : multiple selection
+
+20 December 2010 :
+	Atoms can be fixed dunring MD
+	Screen capture of geometry drawing window in ppm or bmp : A bug were fixed
+
+02 December 2010 :
+	Multigrid method : multipolaire developpement at the center of charge. Multipole order 3 is now used.
+	Comformational search with semi-emperical : A bug is fixed.
+
+08 November 2010 :
+	add Space Fill option to "Draw Geom"" window.
+
+02 November 2010 :
+	Migration to OpenGL for "Draw Geom" window.
+	Remove DRAWGEOMGL variable from CONFIG file to obtain a "Draw Geom" with old style(Cairo).
+
+25 October 2010 :
+	Bug fixed : Gabedit can now read the partial charges from Gamess (FireFly) output file
+
+18 October 2010 :
+	Bug fixed : conversion from Hartree/Bohr to kcal/Ang for FireFly gradient
+
+9 October 2010 :
+	The center of the molecule is not changed after insertion of atoms.
+
+16 September 2010 :
+	Bussi thermostat implemented( velocity scaling)
+	G. Bussi and M. Parrinello, 
+	"Stochastic Thermostats: Comparison of Local and Global Schemes", Computer Physics Communications, 179, 26-29 (2008)
+
+10 September 2010 :
+	   Andersen thermostat changed. 
+
+11 July 2010 :
+	   Parallelization using OpenMP. 
+	   Parallelized Code : 
+		- Computing of Grid for Orbitals, Electronic density, Electrostatic potential (Multigrid Method)
+		- Computing of AIM charges
+		- Computing of Coulomb integral
+		- Computing of Spatial overlap
+		- Computing of MM potential and its gradients
+		- Computing of NMR spectra
+
+1 July 2010 :
+	   migration from gtkglarea to GtkGLExt
+
+08 Jun 2010 :
+	   Text with rotation in XYPlot and ContoursPlot windows.
+	   One can add margins in XYPlot and ContoursPlot windows.
+	   One can add images (from file or clipboard) in the ContoursPlot window.
+
+06 Jun 2010 :
+	   Read orbitals, geometry and normal modes from a fchk Gaussian file.
+	   Read grid from a openDX file.
+	   One can add images (from file or clipboard) in the XYPlot window.
+	   Bug fixed : screen capture of opengl window in png and tif files format.
+
+05 May 2010 :
+	   Read orbitals from the new mopac aux file format (including the compressed format).
+	   New themes for the XYPlot and ContourPlot windows.
+	   
+01 May 2010 :
+	   One can add texts (and change it) in the XYPlot and ContoursPlot windows.
+	   One can add lines (and change it) in the XYPlot and ContoursPlot windows.
+	   Save all data in a Gabedit file format on the XYPlot and ContoursPlot windows
+	   Read data from a Gabedit file format on the XYPlot and ContoursPlot windows
+	   The legend options can be changed by a double click on the legends
+
+28 April 2010 :
+	   The opacity for surface in openGL windows can be changed
+	   The label bug under XYPlot window (with gtk2.18) is fixed
+
+5 April 2010 :
+	   The bond lengths can be fixed during a MD simulation.
+
+1 April 2010 :
+	   Partial optimisation is now available with the MM potential
+
+29 March 2010 :
+	   Computing of spatial overlap matrix <ii|delra(ri,rj)|jj>.
+	   A contours plotting tool have been implemented.
+
+22 March 2010 :
+	   Bug fixed : reading correctly the geometries with a Pd or a Cd from aux file
+	   Add a tool for Optimizing geometry using/Sparkle from the Draw Geom window
+	   New fast method for compute NMR spectrum
+
+24 February 2010 :
+	   Bug fixed : if disk is not C: (under window) for run Gamess or FireFly
+
+10 February 2010 :
+	   Add PM6-DH2 to list of openmopac methods
+
+09 February 2010 :
+	   Add tif format to list of image formats supported by gabedit
+
+01 February 2010 :
+	   Bug to Add hydrogen with a NH2-terminal from a pdb template has fixed
+
+15 January 2010 :
+	In animation Geom. Conv. tools of OpenGL window : 
+	   If ONIOM is in keyword, the HW and OW are writeen at "Low" layer in Gaussian input file.
+	   The MM type are now readed from a Gabedit file (in GEOMS format)
+
+11 January 2010 :
+	Gabedit can read geometries from a IRC Gamess, PCGamess(Firefly) file.
+
+22 December 2009 :
+
+	In Draw geometry window, numbers of atoms are not changed after editing of atoms. 
+	By default, only one surface is showed in Display Window(this can changed by the users).
+
+10 December 2009 :
+	Bug fixed with error message after MOLECULAR ORBITALS from Gamess
+	Bug fixed for CltrZ and u : The geometry in xyz is now apdate after this operation.
+	Bug fixed for change by Measure window : The geometry in xyz is now apdate after this operation.
+	If f key is pressed, the selection is free even if one click on an atom.
+	If g key is pressed, the group attached to cliked atom is selected
+
+9 December 2009 :
+	Bug fixed for reading dipole with "field-independent" basis from a gaussian output file
+
+11 November 2009 :
+	the n,p, f and l keys can be used for selecting a geometry on the "Geom.Conv" window.
+
+9 November 2009 :
+	Computing of the electrophilic, nucleophilic and radical susceptibilities for a molecule.
+
+23 October 2009 :
+	Implementation of a tool to predict the masses and abundances of the isotopes for a given molecule.
+	Atomic weights and isotopic compositions for All Elements are taken from 
+	http://physics.nist.gov/PhysRefData/Compositions/
+
+21 October 2009 :
+	Bug fixed for creation of an orca input file with constraints.
+
+19 October 2009 :
+	Bug fixed for reading beta orbitals form orca output file.
+
+13 September 2009 :
+	Computing of AIM charges [See W. Tang et al J. Phys. Cond.. Matt. 21, 084204(09)]
+
+3 September 2009 :
+	Copy images to clipboard.
+
+21 August 2009 :
+	Computing of the <ii|1/r12|jj> coulomb integral, analytically with GTF and numerically with GTF and STF.
+
+19 August 2009 :
+	The scale for the vibration vectors can be negative.
+	The threshold for the vibration vectors can be changed.
+	Gabedit can now read the raman activity from a Gamess or PCGamess output file.
+	The vibration vectors are added to the povray file.
+
+23 July 2009 :
+	Gabedit can create a pov file and run povray interactively.
+	The povray and the opengl cameras are identical.
+	Show the MO coefficients.
+	Draw the DOS (the density of states)
+	Square a grid. (phi^2)
+	Apply a restriction to grid.
+
+20 July 2009 :
+	Show coefficents of orbitals.
+	Draw the density of states.
+
+11 July 2009 :
+	Orca 2.7 is now supported.
+
+26 May 2009 :
+	Implementation of reaction path calculation with openmopac
+	Translation and rotation are removed at beginning of a MD simulation.
+
+18 May 2009 :
+	Gabedit can create a input file for the 7.4 version of molcas : xyz, zmat, Full symmetry, ....
+	Migration from m2msi to grid format for molcas
+	Bug fixed for computing of electronic density if orbitals (from molden file) not sorted by occupation number.
+
+13 April 2009 :
+	New capping possibility for the polypeptide builder.
+	A undo is implemented for the polypeptide builder.
+
+2 April 2009 :
+	Gabedit can read the esp charges from Gaussian. Gabedit read the esp
+	charges. If they are not available, Gabedit read the natural charges. If they
+	are not available, Gabedit read the Mullekan charges.
+
+20 march 2009 :
+	Gabedit can read the normal modes from a molpro 2008 out file.
+	Gabedit can read the first and last geometries from a gaussian out file with a "nosymm" calculation.
+	The problem of connectivity after the change of number of center (in XYZ geometry editor) is corrected.
+
+19 February 2009 :
+	Undo / Redo have been implemented for the draw window.
+
+17 February 2009 :
+	The user can set the value of the distance, bond angle or dihedral angle in the Mesure notebook.
+	3 color map types are implemented for the opengl window.
+
+07 February 2009 :
+	The user has complete control over the bonds displayed in a drawing.
+	The drawing of the molecule atom by atom have been simplified.
+	The drawing of the molecule fragment by fragment have been simplified.
+	Gabedit read connectivities from gabedit, hin, pdb, mol2 and mol files.
+
+18 January 2009 :
+	A bug is fixed : the beta orbitals from a MOPAC UHF calculation are normalized correctely.
+			 No problem with the old versions of Gabedit for the Alpha orbitals from MOPAC.
+
+14 January 2009 :
+	The bug for generation of Geometry with SYMMETRY for input file of Gamess or PCGamess has been fixed.
+	The bug for read geometrie during a MD Conformation search with PCGamess has fixed.
+
+10 December 2008 :
+	All deprecated Gdk, Gtk and pango functions has removed.
+	The stick&ball can be scaled in the Display window.
+	The user can change the order of atoms by changing the number of atom in the Geometry editor.
+	The bug during read of geometries from a molpro log file is fixed.
+
+30 November 2008 :
+	The background color of the Draw and Display windows are saved at the end of session. 
+	They are restored in the next session.
+	The .dat Gamess file is copied in the directory of the input file at the end of the run.
+	One can run guassian under windows (locally) without runWg03.bat file 
+	(but not tested. I have not gaussian under windows).
+
+11 November 2008 :
+	A Molecular dynamics conformational search is implemented using a PM6/MOPAC or AM1/PCGamess method.
+	One can optimize, calculate the ESP fit charges and energy by MOPAC or PCGamess by one click 
+	from the "Draw Geometry" window.
+
+2 November 2008 :
+	Increase speed of selection on the XYplot window.
+	The identical molecular structures are removed after a Molecular dynamics conformational search.
+
+24 july 2008 :
+	Migration from GDK drawing functions to Cairo: Cross-device Rendering for Vector Graphics.
+	Cairo is now used for the XYplot gabedit widget(used by gabedit for draw spectrums).
+	Cairo is now used for the geometry drawing window.
+	Geometry can be exported in eps, ps, pdf or svg file.
+	The curves of XYplot window can be exported in eps, ps, pdf or svg file.
+	New tool for compute distance between 2 points on XYPlot window.
+	"Control+left button" can be used for do a zoom on XYPlot window. 
+
+10 july 2008 :
+	A Molecular dynamics conformational search is implemented using a MM potential (Amber 99).
+	During the production stage Gabedit selects a number geometries.
+	At the end of the molecular dynamic simulation, each selected geometry is optimized. 
+	Finaly the geometries are sorted by energy and saved in a file.
+	The very similar geometries can be removed by Gabedit.
+	Gabedit can also optimize these geometries, interactively, using Mopac or PCGamess.
+	Gabedit can also creates input files for Mopac, PCGamess or Gaussian for a post processing.
+
+25 june 2008 :
+	Gabedit load the eps charges from a Mopac output file(last geometry) if one is available
+
+24 june 2008 :
+	Under unix, the user can run gamess without any changes to the scripts of gamess.
+
+18 june 2008 :
+	The user can set a title for the openGL window (Set/Title)
+	Gabedit can create	slides for several orbitals by	one
+	click(Orbitals/Slideshow).
+
+25 may 2008 :
+	The user can change the coordinates of atoms directly from the list of atoms.
+	The user can change bond, angles and dihedral in the Z-matrix editor of atoms directly from the list of atoms.
+	Gabedit recalculate the bond, angle and diedral angle value considering the new atomic connectivity index.
+
+19 may	 2008 :
+	The bug due to not ordering atoms in a molden (from molpro) file has been
+	corrected.
+
+6 may 2008 :
+	Gabedit can export the opengl window in eps, ps, pdf, svg file.
+
+28 April	2008 :
+	New windows for ECD spectrum.
+	New windows for read NMR spectrum from a text file.
+
+11 february 2008 :
+	MEP can be calculated from the charges of atoms
+
+21 junary 2008 :
+	Gabedit can read the natural orbitals from Gaussian output file
+
+13 December 2007 :
+	The MEP (Molecular electrostatic potential) can be calculated by Gabedit
+	MEP can be calculated by Multipole approximaiton
+	MEP can be calculated by solving the poisson equation 
+	using Multigrid (V-cycle) or Congugate gradient methods
+	The surface for any function can be color mapped by the MEP
+
+20 November 2007 :
+	Gabedit can show the SAS
+
+7 November 2007 :
+	Cartoon mode fro draw geometry
+	New algorithm	for compute NMR spectrum
+	Export of XY plot in svg format
+
+26 octobre 2007 :
+	Export of XY plot in svg format
+
+2 September 2007 :
+	Gabedit can read Q-Chem grid file
+	Gabedit can create an input output file of Q-Chem
+
+15 March 2007 :
+	Gabedit can create an input output file of Q-Chem
+
+1 March 2007 :
+	Gabedit can read the output file of Q-Chem(Orbitals+Vibration+IR+UV)
+
+20 February 2007 :
+	Gabedit can read the output file of PCGAMESS(Orbitals+Vibration+IR+UV)
+
+9 February 2007 :
+	Gtkplot library has removed.
+	New windows for draw IR, Raman and UV/Visible spectrum.
+
+10 November 2006 :
+	Implementation of an "Unit conversion utility".
+
+10 September	2006 :
+	Read the MD trajectory from a Gaussian output file.
+
+17 June 2006 :
+	ELF : Compute Electron Localized function using the MO
+
+30 May 2006 :
+	Contours for nagative values in dotted lines
+
+18 May 2006 :
+	Compute Amber types of atoms using the symbols and	the bonds types
+	Show multiple bonds type in Geometry draw window
+	Save correct bonds type in .hin file
+	Read Localized orbitals from GAMESS output file (RHF ou UHF)
+	Show multiple bonds in OpenGL, including with stick mode.
+	Create Povray geometry with multiple bonds.
+	The ability to select and freeze atomic positions during energy
+	minimizations(including the generation of appropriate keywords in the
+	GAMESS and Gaussian input file).
+	The ability to select and set the ONIOM Layer.
+
+21 April 2006 :
+	Show/Hide hydrogen atoms.
+	Show symbols/distances in OpenGL window.
+	Find and show the cycles of a molecule.
+
+6 June 2006 :
+	Read and show the geometries for a Gaussian (03) Molcecular dynamique calculation.
+
+1 January 2005
+	Migration from Gtk+1.2 to Gtk+2. All deprecated functions and widgets has removed.
+	Gabedit is now a GUI for MPQC software.
+	Gabedit is now a GUI for Molcas.
+	The M2MSI ascii file (File generated by Molcas)(Orbitals and density ) is now supported.
+	Gabedit can display the hydrogen bonds.
+	You can build a nanotube.
+	You can now visualize the geometry convergence using a Dalton output file.
+	You can now read (and animate) the normal modes from a Dalton output file.
+	ssh protocole is now supported.
+	You can generate the initial structures of PolyPeptide, NucleicAcid and PolySaccharide.
+	You can optmize the geometry using MM calculation.
+	The ADF tape 41 file(text format)(Orbitals and density ) is now supported.
+	The difference between 2 densities is now supported.
+	I added a window for facility the use of Open Babel.
+	I added a window for draw Infra Red and Raman spectrums.
+	Molpro2002 is now supported.
+	Gaussian03 is now supported.
+	Gabedit can now create an isosurface colorcoded with another grid.
+	You can also visualize the geometry convergence using a Molden or a Gabedit file.
+	you can now read frequencies and normal modes from an ADF(version 2004) output file
+	you can now create a MNG (or GIF) animated file (for vibration and rotation).
+	Gabedit can now create a povray file for geometry, surfaces (including
+	colorcoded surfaces), contours (colorcoded), colorcoded planes.
+	Gabedit can now visualize several surfaces.
+	Gabedit can now animate the contours and the colorcoded planes.
+	You can now read normal modes of imaginary frequencies from a Molpro output file
+	You can now visualize the geometry convergences, loaded from a Gabedit,
+	Gaussian, Molpro, MPQC, XYZ or Molden file. You can also create a MNG (or GIF) 
+	animated file from this visualisation. 
+

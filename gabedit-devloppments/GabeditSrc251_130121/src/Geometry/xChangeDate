@@ -1,0 +1,4 @@
+#Thank's to Dominik 'Rathann' Mierzejewski for providing this script
+sed -i \
+ -e 's/Dipole.def = FALSE/init_dipole()/g' \
+ `find -name "*.c" -o -name "*.h"`

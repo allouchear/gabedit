@@ -1,0 +1,24 @@
+/**************************************************************************************************
+ * At this directory you have 2 programs : 
+ * 1-> createMPQCLibFileForGabedit.c 
+ * 2-> createMPQCLibFunctionForGabedit.c
+ *
+ * 1) createMPQCLibFileForGabedit.c is a program for create mpqcBasis file.
+ * For this : put createMPQCLibFileForGabedit.c in the server where MPQC is installed.
+ * Compile this program : cc -o createMPQCLibFileForGabedit createMPQCLibFileForGabedit.c 
+ *
+ * from MPQCDirectory/src/lib/chemistry/qc/basis/gaussbas.h get
+ * the table of basis, delete <table> keyword, </table> keyword and
+ * the first line of table (title : Element ...)
+ * save this file in mpqc.bas
+ *
+ * Type the following order : ./createMPQCLibFileForGabedit
+ * createMPQCLibFileForGabedit.c create mpqcBasis file.
+ * Put this file (mpqcBasis) in .gabedit.1.2.x directroy
+ * .gabedit.1.2.x is a directory created by gabedit at your local station at your home directory
+ * x is the number of micro version of gabedit (x=0, 1, 2, 3, 4, 5, 6, 7, 8 or 9)
+ *
+ *
+ * 2) createMPQCLibFunctionForGabedit.c is a program for create a function of MPQCLib.c file
+ * this file is util only for Gabedit developers
+***************************************************************************************************/

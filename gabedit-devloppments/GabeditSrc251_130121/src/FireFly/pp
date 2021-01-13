@@ -1,0 +1,9 @@
+extern GtkWidget* fireflyWin;
+extern FireFlyMolecule fireflyMolecule;
+extern FireFlyColorFore fireflyColorFore;
+extern FireFlyColorBack fireflyColorBack;
+extern FireFlyBasis fireflyBasis;
+
+extern FireFlyFunctional* functionals;
+extern FireFlyStdFunctional* stdFunctionals;
+extern gdouble* sumFunctionals;

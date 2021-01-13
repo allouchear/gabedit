@@ -1,0 +1,8 @@
+#!/bin/ksh
+GAUSS_SCRDIR=/scratch/$LOGNAME/$RANDOM
+export GAUSS_SCRDIR
+mkdir /scratch/$LOGNAME
+mkdir $GAUSS_SCRDIR
+/home/allouche/abinitio/g98/g98 $1
+/bin/rm -r $GAUSS_SCRDIR/Gau*
+rmdir $GAUSS_SCRDIR

@@ -1,0 +1,10 @@
+extern GtkWidget* qchemWin;
+extern QChemMolecule qchemMolecule;
+extern QChemColorFore qchemColorFore;
+extern QChemColorBack qchemColorBack;
+extern QChemBasis qchemBasis;
+extern QChemGuessWaveFunction qchemGuessWaveFunction;
+
+extern QChemFunctional* functionals;
+extern QChemStdFunctional* stdFunctionals;
+extern gdouble* sumFunctionals;

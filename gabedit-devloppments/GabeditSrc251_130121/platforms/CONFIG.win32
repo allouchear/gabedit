@@ -1,0 +1,34 @@
+# wibdows config (with MinGW)
+
+CC = gcc -mms-bitfields 
+#GTKLIB = `pkg-config gtk+-2.0 --libs`
+GTKLIB = -LE:/allouche/Programs/gtk/lib -lgtk-win32-2.0 -lgdk-win32-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangowin32-1.0 -lgdi32 -lpango-1.0 -lgobject-2.0 -lgmodule-2.0 -lglib-2.0  -lcairo -lpangocairo-1.0
+
+#GTKCFLAGS =  `pkg-config gtk+-2.0 --cflags` 
+GTKCFLAGS = -IE:/allouche/Programs/gtk/include/gtk-2.0 -IE:/allouche/Programs/gtk/lib/gtk-2.0/include -IE:/allouche/Programs/gtk/include/atk-1.0 -IE:/allouche/Programs/gtk/include/pango-1.0 -IE:/allouche/Programs/gtk/include/glib-2.0 -IE:/allouche/Programs/gtk/lib/glib-2.0/include  IE:/allouche/Programs/gtk/include/cairo
+
+MKDIR = mkdir
+MAKE = mingw32-make
+RM = del
+RMTMP = del /S/Q tmp
+OGLLIB = -lopengl32 -lglu32
+OGLCFLAGS=-IE:
+GDKGL = gdkgl-win32
+JPEGLIB    = 
+WIN32LIB   = -lwsock32 -lcomdlg32
+X11LIB   =
+PTHREADLIB  = 
+enable_omp = 0
+ifeq ($(enable_omp),1)
+OMPLIB=-L/usr/lib -lgomp
+OMPCFLAGS=-DENABLE_OMP -fopenmp
+endif
+
+#DRAWGEOMGL= 
+DRAWGEOMGL=-DDRAWGEOMGL
+
+COMMONCFLAGS = -Wall -O2 -DENABLE_DEPRECATED $(OMPCFLAGS) $(DRAWGEOMGL) -Wformat-security -Wno-unused-variable 
+
+
+
+

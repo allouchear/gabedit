@@ -1,0 +1,28 @@
+/**************************************************************************************************
+ * At this directory you have 3 programs : 
+ * 1-> molcaslib.c
+ * 2-> createMolcasLibFileForGabedit.c 
+ * 3-> createMolcasLibFunctionForGabedit.c
+ *
+ * 1) molcaslib.c is a program for obtain the list of basis available in Molcas software.
+ * For this : put molcaslib.c in the server where Molcas is installed.
+ * Compile this program : cc -o molcaslib molcaslib.c
+ * Type the following order : ./molcaslib and enter for obtain all basis for all atoms
+ * Type the following order : ./molcaslib SymbolOfAtom and enter for obtain all basis 'SymbolOfAtom' atom 
+ *                            For example type molcaslib H and enter for obtain all basis H atom 
+ *
+ * 1)
+ * createMolcasLibFileForGabedit.c is a program for create molcasbasis file.
+ * For this : put createMolcasLibFileForGabedit.c in the server where Molcas is installed.
+ * Compile this program : cc -o createMolcasLibFileForGabedit createMolcasLibFileForGabedit.c 
+ * Type the following order : ./createMolcasLibFileForGabedit
+ * createMolcasLibFileForGabedit.c create molcasbasis file.
+ * Put this file (molcasbasis) in .gabedit.1.2.x directroy
+ * .gabedit.1.2.x is a directory created by gabedit at your local station at your home directory
+ * x is the number of micro version of gabedit (x=0, 1, 2, 3, 4, 5, 6, 7, 8 or 9)
+ *
+ *
+ * 2)
+ * createMolcasLibFunctionForGabedit.c is a program for create a function of MolcasLib.c file
+ * this file is util only for Gabedit developers
+***************************************************************************************************/

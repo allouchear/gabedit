@@ -1,0 +1,5 @@
+/*************************************************************************************************************************
+ * in PBS directory, you have a script (submitGaussian) for submit a Gaussian job under PBS batch (single processor) system
+ * in LoadLeveler (IBM) directory, you have  a script (submitGaussian) for submit a Gaussian job under LoadLeveler batch system
+ * in LSF directory, you have  a script (submitGaussian) for submit a Gaussian job under LSF batch system
+**************************************************************************************************************************/

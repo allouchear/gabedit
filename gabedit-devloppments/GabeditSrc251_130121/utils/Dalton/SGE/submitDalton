@@ -1,0 +1,136 @@
+#!/bin/sh
+###################################################################
+#                                                                 #
+#  Script ksh pour lancer un calcul Dalton en batch               #
+#  Auteur:  A-R Allouche allouche@lasim.univ-lyon1.fr             #
+#  LASIM, Villeurbanne                                            #
+#  Ecriture : Janvier 2006                                        #
+#                                                                 #
+###################################################################
+
+queue=$1 ; [ 0 = $# ] || shift
+underqueue=$1 ; [ 0 = $# ] || shift
+filename=$1 ; [ 0 = $# ] || shift
+
+if [ -z "$filename" ] || [ -z "$queue" ]
+then
+   clear
+   echo " " 
+   echo "==========================================="
+   echo "                 submitDalton "
+   echo " Pour toutes questions contacter : "
+   echo " A.R. Allouche allouche@lasim.univ-lyon1.fr"
+   echo "==========================================="
+   echo "vous devez fournir le nom de la queue et le nom de la sous-queue :"
+   echo "     Queue         Duree    Sous-Queue     Nproc max"
+   echo "     =========     =====    ==========     ========="
+   echo "     v20zlin       12h      v20zlin4          4"
+   echo "                            v20zlin8          8"
+   echo "                            v20zlin16        16"
+   echo "                            v20zlin32        32"
+   echo "                            v20zlin64        64"
+   echo "     v20zlinL      24h      v20zlin16        16"
+   echo "                            v20zlin32        32"
+   echo "     v20zlinS      48h      v20zlin4          4"
+   echo "                            v20zlin8          8"
+   echo "     v40zlin       24h      v40zlin4          4"
+   echo "                            v40zlin8          8"
+   echo "                            v40zlin16        16"
+   echo "                            v40zlin32        32"
+   echo "     v40zlinL      48h      v40zlin8          8"
+   echo "     v40zlinS      96h      v40zlin4          4"
+   echo "     test8proc     5mn      v20ztest8         8"
+   echo "     test4proc     10mn     v40ztest4         4"
+   echo " - le nom du fichier(y compris l'extension .dal)"
+   echo "-------------------------------------------"
+   echo "Exemple:"
+   echo "       submitDalton v20zlin v20zlin4 h2.dal "
+   echo "       fichier de donnees : h2.dal"
+   echo "       Queue,Sous-Queue   : v20zlin (12h00)+v20zlin4(4 proc)"
+   echo "==========================================="
+   echo " " 
+   exit 1
+fi
+fileinp=$filename
+filename=${fileinp%.dal}
+nproc=`echo $underqueue | awk '{split($0,a,"lin"); print a[2]}'`
+d="x$nproc"
+l="x"
+if (  test $l == $d )
+then
+nproc=`echo $underqueue | awk '{split($0,a,"test"); print a[2]}'`
+fi
+d="x$nproc"
+l="x"
+if (  test $l == $d )
+then
+echo "Sorry, $underqueue n'est pas une sous queue de $queue "
+exit
+fi
+base1=`echo $queue | awk '{split($0,a,"lin"); print a[1]}'`
+base2=`echo $underqueue | awk '{split($0,a,"lin"); print a[1]}'`
+if (  test $base1 != $base2 )
+then
+	base1=`echo $queue | awk '{split($0,a,"proc"); print a[1]}'`
+	base2=`echo $underqueue | awk '{split($0,a,"z"); print a[2]}'`
+	if (  test $base1 != $base2 )
+	then
+		echo "Sorry, $underqueue n'est pas une sous queue de $queue "
+		exit
+	fi
+fi
+DEFAULTDIR=`pwd`
+if test ! -s "$fileinp"
+then
+   echo " " 
+   echo "============================================"
+   echo "le fichier $fileinp est introuvable(ou vide)"
+   echo "============================================"
+   echo " " 
+   exit 2
+fi
+
+DALTONBIN="/home/allouche/bin/dalton"
+lamfile0=.lam.$filename
+lamfile=$DEFAULTDIR/.lam.$filename
+endof=EOF
+cat > $filename.sh <<EOF
+#!/bin/sh
+rm $lamfile
+cd $DEFAULTDIR
+rm $HOME/scr/$filename.*
+nmax=\`wc -l \$PE_HOSTFILE\`
+nmax=\`echo \$nmax | awk '{split(\$0,a," "); print a[1]}'\`
+IPROC=1
+while [ \$IPROC -le \$nmax ]
+do
+  MYNODE=\`sed -n -e "\$IPROC p" \$PE_HOSTFILE\`
+  MYNODE=\`echo \$MYNODE | awk '{split(\$0,a,"."); print a[1]}'\`
+  MYNP=\`sed -n -e "\$IPROC p" \$PE_HOSTFILE\`
+  NP=\`echo \$MYNP | awk '{split(\$0,a," "); print a[2]}'\`
+  echo "\$MYNODE cpu=\$NP" >> $lamfile
+  IPROC=\$((IPROC+1))
+  lastNode=\$MYNODE
+done
+cat $lamfile
+
+ssh \$lastNode 'cd $DEFAULTDIR; lamboot -v $lamfile; $DALTONBIN -N $nproc $fileinp; lamhalt ; rm $lamfile'
+EOF
+#LAMRSH="ssh -x" ; export LAMRSH
+
+/usr/local/sge/bin/lx24-amd64/qsub -o $DEFAULTDIR -e $DEFAULTDIR -q $queue -pe $underqueue $nproc $filename.sh
+echo " " 
+echo "==================================================================="
+echo " " 
+echo "Un fichier $filename.sh a ete cree pour lancer le calcul"
+echo "Ne pas effacer ce fichier avant la fin du calcul"
+echo " " 
+echo "-------------------------------------------------------------------"
+echo " " 
+echo "pour avoir des informations sur vos job taper : qstat "
+echo " " 
+echo "pour detruire un job taper : qdel JobID"
+echo "   JobID est le Job-Id fourni par qstat" 
+echo " " 
+echo "==================================================================="
+echo " " 

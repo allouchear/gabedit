@@ -1,0 +1,59 @@
+
+INSTALL GABEDIT
+---------------
+
+Installation in unix/Linux system : 
+===================================
+
+    The 2.16 version of GTK+ (or higher) is required for this version of Gabedit
+
+    For install gabedit from src files, execute following commands: 
+
+         gunzip  GabeditSrcxyz.tar.gz 
+         tar  -xvf   GabeditSrcxyz.tar 
+         cd  GabeditSRCxyz 
+	 cp plaforms/CONFIG.unix CONFIG
+         make 
+         ./gabedit
+
+         you can install (optional) Gabedit in /usr/local/bin directory, for this type :
+         cp ./gabedit   /usr/local/bin/.   (under root)
+         after installation you can execute gabedit from any directory for this type :
+	 gabedit 
+
+Installation under MAC OS X11  system : 
+===================================
+
+   1- install X11 if this is not already installed on your mac (see http://guide.macports.org/#installing.x11) 
+
+   2- install macports (http://www.macports.org/) 
+
+   3- install gtk2 using macports. Under an unix terminal(Applications:Utilities:Terminal), type : 
+        sudo port install gtk2 
+       
+   4- install gtkglext using macports. Under an unix terminal, type : 
+    	sudo port install gtkglext
+   
+   5- Copy the platforms/CONFIG.MacPorts file at CONFIG in the Gabedit directory and type make (under an unix terminal):
+    	cp platforms/CONFIG.MacPorts  CONFIG
+       	make
+
+
+Installation of binary version of Gabedit in Windows(2000, XP, ...)  system : 
+=============================================================================
+     click to setupGabeditxyz.exe
+     click to Gabedit.exe program 
+
+Compilation of Gabedit under Windows (2000, XP, ....) system : 
+==============================================================
+
+    The 2.16 version of GTK+ (or higher) is required for this version of Gabedit
+
+    For install gabedit from src files, execute following commands: 
+
+         gunzip  GabeditSrcxyz.tar.gz 
+         tar  -xvf   GabeditSrcxyz.tar 
+         cd  GabeditSrcxyz 
+	 copy platforms\CONFIG.win32 CONFIG
+	 mingw32-make
+         ./gabedit
