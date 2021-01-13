@@ -1,349 +1,362 @@
 26 August 2020
-        Compute Cremer-Pople parameters for pyranose.
+	Compute Cremer-Pople parameters for pyranose saccharide
 
 29 July 2020
-        Compute the type of conformer for a saccharide : pyranose (1C4, 4C1, ....) & furanose (3E, 2T2, ....)
-        Gabedit can Compute the type of conformer for one molecule or for several ones (Animation/MD or Animation/Geom. Conv of Display window)
+	Compute the type of conformer for a saccharide : pyranose (1C4, 4C1, ....) & furanose (3E, 2T2, ....)
+	Gabedit can Compute the type of conformer for one molecule or for several ones (Animation/MD or Animation/Geom. Conv of Display window)
 
 12 May October 2020
-        remove gdk_gl_font_use_pango_font.
-        new style of labels on GL windows
+	remove gdk_gl_font_use_pango_font.
+	new style of labels on GL windows
 
 31 October 2019
-        Rotate fragment without rotation of all structure
+	Rotate fragment without rotation of all structure
 
 13 June 2019
-        Change Error in Warning if the electronic density is negative during  NCI analysis
+	Change Error in Warning if the electronic density is negative during  NCI analysis
 
 12 June 2019
-        remove call fit_windows_position
+	Remove call fit_windows_position
 
 22 January 2019
-        minor bug fixed : set origin to center of molecule
+	minor bug fixed : set origin to center of molecule
 
 17 January 2019
-        Gabedit can now read orbitals& geometry from WFX file.
-        It can also export orbitals in a WFX file.
+	Gabedit can now read orbitals& geometry from WFX file.
+	It can also export orbitals in a WFX file.
 
 5 December 2018
-        Mopac gradients output file format changed in 2018. Gabedit supports now this new format.
+	Mopac gradients output file format changed in 2018. Gabedit supports now this new format.
 
 31 October 2018
-        Export structure in CIF file (with or without symmetry operators).
-        Reduction to primitive Cell.
-        Reduction to Niggli or Delaunay Cell.
-        Computing of space group & symmetry operators.
-        Standardize cell (to conventional or primitive).
-        Generate k-points along high symmetry lines, for band structure calculations.
-        Get a prototype crystal from a database implemented in Gabedit.
+	Export structure in CIF file (with or without symmetry operators).
+	Reduction to primitive Cell.
+	Reduction to Niggli or Delaunay Cell.
+	Computing of space group & symmetry operators.
+	Standardize cell (to conventional or primitive).
+	Generate k-points along high symmetry lines, for band structure calculations.
+	Get a prototype crystal from a database implemented in Gabedit.
 
 13 October 2018
-        read CIF file
-        Build slab : Crystallography/Build slab
+	read CIF file
+	Build slab : Crystallography/Build slab
 
 1 October 2018
-        read Direct poscar file : if u_<0 or u_i>1 for an atom=> shift to set it on the cell
+	read Direct poscar file : if u_<0 or u_i>1 for an atom=> shift to set it on the cell
 
 27 September 2018
-        Build superCell : Crystallography/Build superCell
-        Create clusters using Wulff construction : Crystallography/Build cluster using Wulff construction
+	Build superCell : Crystallography/Build superCell
+	Create clusters using Wulff construction : Crystallography/Build cluster using Wulff construction
+
+21 September 2018
+	UV spectrum can be converted in UV nm
+
+19 September 2018
+	Localization of Normal Modes.  References : 
+	Christoph R. Jacob & Markus Riher , J. Chem Phys. 130 (2009) 084106
+	Xiaolu Cheng, Justin J. Talbot, and Ryan P. Steele, J. Chem. Phys. 145 (2016) 124112;
+
+11 July 2018
+	Constraint bug(with recent versions of orca) in Orca input file fixed
 
 21 June 2018
-        Global and local reactivity indices (By Finite difference or Frontier Molecular Orbitals) : Display window/Reactvity Indices
+	Global and local reactivity indices (By Finite difference or Frontier Molecular Orbitals) : Display window/Reactvity Indices
 
 14 June 2018
-        New tool to compute the thermochemistry : Display window/Animation/Vibration
-
+	New tool to compute the thermochemistry : Display window/Animation/Vibration
+	
 03 April 2017
-        Bug fixed for set center to origin
-
+	Bug fixed for set center to origin
+	
 30 March 2017
-        The format of .hess and .out files of Orca4 are slightly different from them of Orca3.
-        Gabedit can now read .hess and .out file of Orca4 (and Orca3)
+	The format of .hess and .out files of Orca4 are slightly different from them of Orca3. 
+	Gabedit can now read .hess and .out file of Orca4 (and Orca3)
 
 08 February 2017
-        Energy, geometry optimization, MD, MD Conformations search by an external (generic) program are
-        now supported. Gabedit creates an input file for the external program, this program compute energy, dipole, gradients or optimize the geometry.
-        This program must produce an output file supported by Gabedit.
-        The input file for the external program (or script) created by gabedit contains :
-        First line is an integer : 0 for energy, 1 for gradients and 2 for optimization
-        Second line contains the text "Geometry"
-        third line number of atoms, charge and multiplicity of the molecule.
-        From forth line, symbol, mmtype, pdftype, residuname, interger, charge, interger, integer, x y z and connectivities (xyz in Ang)
-        The external program must produce an output file with :
-        energy in atomic unit in the first line
-        dipole in atomic unit in the second line
-        gradients (atomic units) in next lines if gradients are required
-        Geometry in next lines if the geometry optimisation is required.
-        As examples, see :
-        The script runDFTBPGabedit (page web of gabedit) as an example
-        The script runGamessPM3 is another example (page web of gabedit).
+	Energy, geometry optimization, MD, MD Conformations search by an external (generic) program are
+	now supported. Gabedit creates an input file for the external program, this program compute energy, dipole, gradients or optimize the geometry.
+	This program must produce an output file supported by Gabedit.
+	The input file for the external program (or script) created by gabedit contains : 
+	First line is an integer : 0 for energy, 1 for gradients and 2 for optimization
+	Second line contains the text "Geometry"
+	third line number of atoms, charge and multiplicity of the molecule.
+	From forth line, symbol, mmtype, pdftype, esiduname, interger, charge, interger, integer, x y z and connectivities (xyz in Ang)
+	The external program must produce an output file with :
+	energy in atomic unit(au) in first line
+	dipole in au in the second line
+	gradients (in au) in next lines if gradients are required
+	Geometry in next lines if the geometry optimisation is required.
+	As examples, see :
+	The script runDFTBPGabedit (page web of gabedit) as an example 
+	The script runGamessPM3 is another example (page web of gabedit). 
 
 01 February 2017
-        Energy, geometry optimization, MD, MD Conformations search by MMFF94, MMFF94s, UFF and Ghemical potentials are
-        now supported via openbabel.
-        obgradient, obopt  programs and the 2.3.2 folder of parameters are needed and to be installed
-        in C:\OpenBabel under windows, $HOME/OpenBabel under unix (MacOS and Linux). The location of this folder
-        can be changed but the directory must be changed via Preferences/Other gabedit window.
-        OpenBabel directory can be download from Gabedit web page for each OS.
+	Energy, geometry optimisation, MD, MD Conformations search by MMFF94, MMFF94s, UFF and Ghemical potentials are
+	now supported via openbabel. obgradient, obopt  programs and 2.3.2 folder parameters are needed and to be installed
+	in C:\OpenBabel under windows of $HOME/OpenBabel under unix (MacOS and Linux). The location of this folder
+	can be changed but the directory must be changed via Preferences/Other gabedit window.
+	OpenBabel directory can be download from Gabedit web page for each OS.
 
 24 January 2017
-        Compute the type of conformer for a saccharide (1C4, 4C1, ....)
-        Compute the anharmonic spectrum by QM/MMFF94 method using iGVPT2 program.
-        Read the harmonic and anharmonic spectra from an iGVPT2 output file.
+	Compute the type of conformer for a saccharide (1C4, 4C1, ....)
+	Compute the anharmonic spectrum by QM/MMFF94 method using iGVPT2 program.
+	Read the harmonic and anharmonic spectra from an iGVPT2 output file.
 
 25 August 2016
-    DeMon2k is now supported by Gabedit. Gabedit can create input files, run demon and visualize the results using the molden file created by demon2k
+	DeMon2k is now supported by Gabedit. Gabedit can create input files, run demon and visualize the results using the molden file created by demon2k
 
 27 April 2016
-    Gabedit can now read the geometry from POSCAR and from vasprun.xml
+	Gabedit can now read the geometry from POSCAR and from vasprun.xml
 
 25 April 2016
-        Save geometry in POSCAR
-        Scale cell
+	Save geometry in POSCAR
+	Scale cell
 
 1 April 2016
-        Tools for VASP :
-        Read dielectric function from a VASP xml file and compute optic properties Optic,
-        read data from vasprun.xml and plot DOS, pDOS and, Bands structures
+	Tools for VASP : 
+	Read dielectric function from a VASP xml file and compute optic properties Optic,
+	read data from vasprun.xml and plot DOS, pDOS and, Bands structures 
 
 8  September 2015
-        Gabedit can not read the hessian from .hess orca file.
-        After reading of the hessian, Gabedit compute frequencies, modes and effective masses
+	Gabedit can not read the hessian from .hess orca file. 
+	After reading of the hessian, Gabedit compute frequencies, modes and effective masses
 
 30 June 2015
-        Export in CChemI : update
-        Tv accepted (used by Gaussian and Mopac for periodic system)
-        Using Tv, Gabedit can generate other cells
+	Export in CChemI : update
+	Tv accepted (used by Gaussian and Mopac for periodic system)
+	Using Tv, Gabedit can generate other cells
 
 1  June 2015
-        QFF tools are implemented : Display/Vibration + main menu Tools/QFF
+	QFF tools are implemented : Display/Vibration + main menu Tools/QFF
 
-11 March 2015
-        bug fixed : geometry in Display window if ECP used.
+11 march 2015
+	bug fixed : geometry in Display window if ECP used
 
-13 February 2015
-        read geometries (Optimization or M. Dynamic) from VASP OUTCAR file
+13 february 2015
+	read geometries (Opt or Dyn) from VASP OUTCAR file
 
 15 May 2014
-        Bug fixed to read dummy atom from molpro output file
+	Bug fixed to read dummy atom from molpro output file
 
 07 March 2014
-        Bug fixed to read the last geometry from mopac output file(no bug with the first geometry, no bugs if aux file)
+	Bug fixed to read the last geometry from mopac output file(no bug with the first geometry, no bugs if aux file)
 
 25 October 2013
-    new tool to remove half cube grid
-    remove implicit declaration warning
+	new tool to remove half cube grid
+	remove implicit declaration warning
 
 24 October 2013
-    new tool to compute the integral of the function on the grid
+	new tool to compute the integral of the function on the grid
 
 30 September 2013
-    run orca from Draw geometry : bug fixe (new input format with orca, without params)
+	run orca from Draw geometry : bug fixe (new input format with orca, without params)
 
 19 August 2013
-        Bug fixed for reading basis with d,f,.. orbitals from a  fchk file. Only fchk file is concerned by this bug (There was no bug for reading  from a .log file)
-        PM7 added to list of Mopac Hamiltonian list.
+	read fchk file with d,f,.. orbitals bug fixed (There was no bug for reading  from a .log file)
+	PM7 added to list of Mopac hamiltonian 
 
 24 July 2013
-        Gabedit can now calculate the lambda diagnostic for CT (see Peach et al. J. Chem. Phys. 128, 044118 (2008))
+	Gabedit can now calculate the lambda diagnostic for CT (see Peach et al. J. Chem. Phys. 128, 044118 (2008))
 
 18 July 2013
-        Gabedit can now symmetrize a molecule (see Largent et al. J. Comput Chem. 33 (2012) 1637-1642)
+	Gabedit can now symmetrize a molecule (see Largent, RJ, Polik, WF, Schmidt, JR, J. Comput Chem. 33 (2012) 1637-1642)
 
 08 July 2013
-        new parsers to read :
-                UV-Visible spectrum from a Gamess unrestricted TDDFT calculation
-                Raman spectrum from a QChem output file
-                Anharmonic IR spectrum(VT2) from a Gaussian (D01) output file
-                Anharmonic IR spectrum(VSCF, VSCF-PT2) from a Gamess output file
+	new parsers to read : 
+		UV-Visible spectrum from a Gamess unrestricted TDDFT calculation
+		Raman spectrum from a QChem output file
+		Anharmonic IR spectrum(VT2) from a Gaussian (D01) output file
+		Anharmonic IR spectrum(VSCF, VSCF-PT2) from a Gamess output file
 
 02 May 2013
-        bug fixed : analytical gradient for PairWize potential with OMP
+	bug fixed : analytical gradient for PairWize potential with OMP
 
 02 April 2013
-        bug fixed : set distance, angle, dihedral in DrawGeomCairo bug fixed
-        bug fixed : analytical gradient for PairWize potential
+	bug fixed : set distance, angle, dihedral in DragGeomCairo bug fixed
+	bug fixed : analytical gradient for PairWize potential 
 
 05 March 2013
-        bug fixed : read geometries convergence with non scf method from a molpro log files
-        New DFT functionals in Gaussian interface
+	bug fixed : read geometries convergence with non scf method from a molpro log files
+	New DFT functionals in Gaussian interface
 
 16 September 2012
-        bug fixed : read personal fragment under windows
+	bug fixed : read personal fragment under windows
 
 14 September 2012
-        set molecule in the standard orientation
-        Align selected and not selected fragments
+	set molecule in the standard orientation
+	Align selected and not selected fragments
 
 05 September 2012
-        Bug fixed : reading of the number occuped beta orbitals from a fchk file.
+	Bug fixed : reading of the number occuped beta orbitals from a fchk file.
 
 25 July 2012
-        Bug fixed : read orbitals with ECP from a GAMESS-US output file
+	Bug fixed : read orbitals with ECP from a GAMESS-US output file
+
+20 July 2012
+	Analysis of Spatial Extent in Charge-Transfer Excitations implemented (See Le Bahers et al., J. Chem. Theory Comput. 2011, 7, 2498–2506)
 
 19 July 2012
-        NCI (Non covalent interactions index) analysis implemented
-        Dummy atom in an orca input file bug fixed
-        Read orbitals&Geometry from an orca  ouput file with a dummy bug fixed
-        Insert a non-bonded atom in "Draw geometry window" bug fixed
+	NCI (non-covalent interactions index) analysis implemented (see Johnson et al., J. Am. Chem. Soc. 132, 6498 (2010))
+	Dummy atom in an orca input file bug fixed
+	Read orbitals&Geometry from an orca  ouput file with a dummy atom, bug fixed
+	Insert a non-bonded atom in "Draw geometry window" bug fixed
 
 07 July 2012 :
-        Psi4 partially supported : input file, geometries, frequencies, UV Spectrum
+	Psi4 partially supported : input file, geometries, frequencies, UV Spectrum
 
 20 June 2012 :
- Bug fixed : computing of double&triple bonds
+	Bug fixed : computing of double&triple bonds
 
 10 June 2012 :
-        Warning with -Wformat have been fixed
+	Warning with -Wformat have been fixed
 
 29 March 2012 :
-        Filter (Gaussian, Blackman, Blackman-Harris,...) in GabexitXYPlot window (not fully tested)
+	Several Filters (Gaussian, Blackman, Blackman-Harris,...) implemented in XYPlot window (not fully tested)
 
 08 Marsh 2012 :
- read gamess geometries in Display window :  bug fixed
+	read gamess geometries in Display window :  bug fixed
 
 02 Marsh 2012 :
- GENNBO files : read any type of orbitals
+	NBO basis (file .31) : read any type of orbitals
 
 27 February 2012 :
- NBO basis (file .31) : read geometry
+	NBO basis (file .31) : read geometry
 
 06 October 2011 :
- Orca input file : constraint removed if no fixed atom.
+	Orca input file : constraint removed if no fixed atom.
 
 03 October 2011 :
- Bug fixed for saving geometry in mol forma
+	Bug fixed for saving geometry in mol format
 
 15 September 2011 :
- Bug fixed for reading orbitals from a ORCA output file
- Bug fixed for drawing colorcoded planes (under windows OS)
+	Bug fixed for reading orbitals from a ORCA output file
+	Bug fixed for drawing colorcoded planes (under windows OS)
 
 13 Jyly 2011 :
- NWChem is now supported
- Geometry and charges can be read from a aimall sum file
+	NWChem is now supported
+	Geometry and charges can be read from a aimall sum file
 
 10 June 2011 :
- Bug fixed for animated vibration/threshold
- Bug fixed : orbitals read from a molpro output file (define NOrb)
+	Bug fixed for animated vibration/threshold
+	Bug fixed : orbitals molpro (define NOrb)
 
 1 June 2011 :
- Group of the third atom can be rotated in Draw Geom window.
+	Group of the third atom can be rotated in Draw Geom window.
 
 30 April 2011 :
- pair radial distribution
- RMSD for a trajectory
- Reading dipole from a ADMP output file and computing of auto correlation dipole function (not fully tested)
+	pair radial distribution
+	RMSD for a trajectory
+	Reading dipole from a ADMP output file and computing of auto correlation dipole function (not fully tested)
 
 7 April 2011 :
- Fourier Transformation in GabexitXYPlot window (not fully tested)
+	Fourier Transformation in GabexitXYPlot window (not fully tested)
 
 5 April 2011 :
- Orthonormalization of Mopac MO (only normalisation on old versions)
+	Orthonormalization of Mopac MO (only normalisation on old versions)
 
-10 March 2011 :
- Local rotation bug fixed
- Screen capture (using png or tif) under window bug fixed 
+10 Mars 2011 :
+	Local rotation bug fixed
+	Screen capture (using png or tif) under window bug fixed 
 
 22 February 2011 :
- Show cell in Display window
- Bug : Update coordinates after a move fragment
+	Show cell in Display window
+	Bug : Update coordinates after a move fragment
 
 20 Junuary 2011 :
- Read beta orbitals from fchk file : Bug fixed
- Rotation of a fragment by mouse : bug fixed
+	Read beta orbitals from fchk file : Bug fixed
+	Rotation of a fragment by mouse : bug fixed
 
 22 December 2010 :
-        new tools for select atoms : multiple selection
+	new tools for select atoms : multiple selection
 
 20 December 2010 :
-        Atoms can be fixed dunring MD
-        Screen capture of geometry drawing window in ppm or bmp : A bug were fixed
+	Atoms can be fixed dunring MD
+	Screen capture of geometry drawing window in ppm or bmp : A bug were fixed
 
 02 December 2010 :
- Multigrid method : multipolaire developpement at the center of charge. Multipole order 3 is now used.
- Comformational search with semi-emperical : A bug fixed.
+	Multigrid method : multipolaire developpement at the center of charge. Multipole order 3 is now used.
+	Comformational search with semi-emperical : A bug is fixed.
 
 08 November 2010 :
- add Space Fill option to "Draw Geom"" window
+	add Space Fill option to "Draw Geom"" window.
 
 02 November 2010 :
-        Migration to OpenGL for "Draw Geom" window.
-        Remove DRAWGEOMGL variable from CONFIG file to obtain a "Draw Geom" with old style(Cairo).
+	Migration to OpenGL for "Draw Geom" window.
+	Remove DRAWGEOMGL variable from CONFIG file to obtain a "Draw Geom" with old style(Cairo).
 
 25 October 2010 :
-        Bug fixed : Gabedit can now read the partial charges from Gamess (FireFly) output file
+	Bug fixed : Gabedit can now read the partial charges from Gamess (FireFly) output file
 
 18 October 2010 :
-        Bug fixed : conversion from Hartree/Bohr to kcal/Ang for FireFly gradient
+	Bug fixed : conversion from Hartree/Bohr to kcal/Ang for FireFly gradient
 
 9 October 2010 :
-        The center of the molecule is not changed after insertion of atoms.
+	The center of the molecule is not changed after insertion of atoms.
 
 16 September 2010 :
-        Bussi thermostat implemented( velocity scaling)
-        G. Bussi and M. Parrinello,
-        "Stochastic Thermostats: Comparison of Local and Global Schemes", Computer Physics Communications, 179, 26-29 (2008)
+	Bussi thermostat implemented( velocity scaling)
+	G. Bussi and M. Parrinello, 
+	"Stochastic Thermostats: Comparison of Local and Global Schemes", Computer Physics Communications, 179, 26-29 (2008)
 
 10 September 2010 :
-           Andersen thermostat changed.
+	   Andersen thermostat changed. 
 
 11 July 2010 :
-           Parallelization using OpenMP.
-           Parallelized Code :
-                - Computing of Grid for Orbitals, Electronic density, Electrostatic potential (Multigrid Method)
-                - Computing of AIM charges
-                - Computing of Coulomb integral
-                - Computing of Spatial overlap
-                - Computing of MM potential and its gradients
-                - Computing of NMR spectra
+	   Parallelization using OpenMP. 
+	   Parallelized Code : 
+		- Computing of Grid for Orbitals, Electronic density, Electrostatic potential (Multigrid Method)
+		- Computing of AIM charges
+		- Computing of Coulomb integral
+		- Computing of Spatial overlap
+		- Computing of MM potential and its gradients
+		- Computing of NMR spectra
 
 1 July 2010 :
-           migration from gtkglarea to GtkGLExt
+	   migration from gtkglarea to GtkGLExt
 
 08 Jun 2010 :
-   Text with rotation in XYPlot and ContoursPlot windows.
-   One can add margins in XYPlot and ContoursPlot windows.
-   One can add images (from file or clipboard) in the ContoursPlot window.
+	   Text with rotation in XYPlot and ContoursPlot windows.
+	   One can add margins in XYPlot and ContoursPlot windows.
+	   One can add images (from file or clipboard) in the ContoursPlot window.
 
 06 Jun 2010 :
-   Read orbitals, geometry and normal modes from a fchk Gaussian file.
-   Read grid from a openDX file.
-   One can add images (from file or clipboard) in the XYPlot window.
-   Bug fixed : screen capture of opengl window in png and tif files format.
+	   Read orbitals, geometry and normal modes from a fchk Gaussian file.
+	   Read grid from a openDX file.
+	   One can add images (from file or clipboard) in the XYPlot window.
+	   Bug fixed : screen capture of opengl window in png and tif files format.
 
 05 May 2010 :
-       Reading of orbitals from the new mopac aux file format (including the compressed format).
-       New themes for the XYPlot and ContoursPlot windows.
-      
+	   Read orbitals from the new mopac aux file format (including the compressed format).
+	   New themes for the XYPlot and ContourPlot windows.
+	   
 01 May 2010 :
-       One can add texts (and change it) in the XYPlot and ContoursPlot windows.
-       One can add lines (and change it) in the XYPlot and ContoursPlot windows.
-       Save all data in a Gabedit file format on the XYPlot and ContoursPlot windows
-       Read data from a Gabedit file format on the XYPlot and ContoursPlot windows
-       The legend options can be changed by a double click on the legends
+	   One can add texts (and change it) in the XYPlot and ContoursPlot windows.
+	   One can add lines (and change it) in the XYPlot and ContoursPlot windows.
+	   Save all data in a Gabedit file format on the XYPlot and ContoursPlot windows
+	   Read data from a Gabedit file format on the XYPlot and ContoursPlot windows
+	   The legend options can be changed by a double click on the legends
 
 28 April 2010 :
-       The opacity for surface in openGL windows can be changed
-       The label bug under XYPlot window (with gtk2.18) is fixed
+	   The opacity for surface in openGL windows can be changed
+	   The label bug under XYPlot window (with gtk2.18) is fixed
 
 5 April 2010 :
-        The bond lengths can be fixed during a MD simulation.
+	   The bond lengths can be fixed during a MD simulation.
 
 1 April 2010 :
-        Partial optimization is now possible with the MM potential.
+	   Partial optimisation is now available with the MM potential
 
 29 March 2010 :
-        Computing of spatial overlap matrix <ii|delra(ri,rj)|jj>.
-        A contours plotting tool have been implemented.
+	   Computing of spatial overlap matrix <ii|delra(ri,rj)|jj>.
+	   A contours plotting tool have been implemented.
 
 22 March 2010 :
-     Bug fixed : reading correctly the geometries with a Pd or a Cd from aux file
-     Add a tool for Optimizing geometry using/Sparkle from the Draw Geom window
-     New fast method for compute NMR spectrum
+	   Bug fixed : reading correctly the geometries with a Pd or a Cd from aux file
+	   Add a tool for Optimizing geometry using/Sparkle from the Draw Geom window
+	   New fast method for compute NMR spectrum
 
 24 February 2010 :
-	   Bug fixed : if disk is not C: (under window) for run Gamess
+	   Bug fixed : if disk is not C: (under window) for run Gamess or FireFly
 
 10 February 2010 :
 	   Add PM6-DH2 to list of openmopac methods
@@ -638,3 +651,4 @@
 	You can now visualize the geometry convergences, loaded from a Gabedit,
 	Gaussian, Molpro, MPQC, XYZ or Molden file. You can also create a MNG (or GIF) 
 	animated file from this visualisation. 
+
