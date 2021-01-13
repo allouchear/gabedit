@@ -1,6 +1,0 @@
-extern BasisType *BasisT;
-extern BasisCenter *BasisC;
-
-extern gint  NSymbTypes;
-extern gint  NSymbCenters;
-
