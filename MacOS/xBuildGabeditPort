@@ -17,7 +17,7 @@ sudo port install gtk2
 # Install libtool
 sudo port install libtool
 
-# Install libtool
+# Install pkgconfig
 sudo port install pkgconfig 
 
 # Install gtkglext
