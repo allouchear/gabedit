@@ -1,0 +1,13 @@
+#!/bin/sh
+###################################################################
+#                                                                 #
+#  Script to run firefly under Mac                                #
+#  Author:  A-R Allouche allouche@lasim.univ-lyon1.fr             #
+#  LASIM, Villeurbanne                                            #
+#                                                                 #
+###################################################################
+
+fileinp=$1
+fileout=${fileinp%.inp}.log
+NPRC=1
+firefly.sh $PWD/$fileinp $PWD/$fileout $NPRC
