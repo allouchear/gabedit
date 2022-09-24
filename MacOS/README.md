@@ -3,7 +3,7 @@
 ## Install Gabedit using port
 
 * Install [MacPorts](https://www.macports.org/install.php)
-* Under a terminal (Press CmdSpace to open spotlight search, and type terminal and hit return.) , type:
+* Under a terminal (Press Cmd+Space to open spotlight search, and type terminal and hit return.) , type:
 ```console
 mkdir tmpGabedit
 cd tmpGabedit
