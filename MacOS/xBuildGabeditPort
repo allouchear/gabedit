@@ -1,0 +1,36 @@
+#!/bin/bash
+
+DEFDIR=`pwd`
+
+echo $DEFDIR
+
+# Install wget using port
+sudo port install wget
+
+# Install mesa3D OpenGL
+sudo port install mesa
+
+# Install gtkglext
+wget https://github.com/allouchear/gabedit/raw/main/MacOS/gtkglext-macport.tar.gz
+tar xvf gtkglext-macport.tar.gz
+cd gtkglext-macport
+./xconfigure
+make -j4
+sudo make install
+cd $DEFDIR
+
+
+wget https://github.com/allouchear/gabedit/raw/main/MacOS/GabeditSrc252.tar.gz
+tar xvf GabeditSrc252.tar.gz
+cd GabeditSrc252
+cp platforms/CONFIG.MacPorts CONFIG
+make -j4 
+sudo cp gabedit /opt/local/bin
+echo "============================================================="
+echo "Gabedit installed in /opt/local/bin"
+cd $DEFDIR
+
+echo "You can remove gtkglext-macport*"
+echo "You can remove GabeditSrc252*"
+echo "============================================================="
+
