@@ -1,4 +1,4 @@
-# Install Gabedit
+# Install Gabedit on MacOS
 
 ## Install Gabedit using port
 
