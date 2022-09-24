@@ -11,6 +11,6 @@ wget https://github.com/allouchear/gabedit/raw/main/MacOS/xBuildGabeditPort
 chmod u+x xBuildGabeditPort
 ./xBuildGabeditPort
 ```
-Please note that install : wget, mesa and gtk2 using port, download and install gtkglext and finally Gabedit.
+Please note, that install : wget, mesa and gtk2 using port, download and install gtkglext and finally Gabedit.
 After installation, you can remove tmpGabedit directory
 
